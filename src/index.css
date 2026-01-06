@@ -458,6 +458,47 @@
   animation-delay: 0.4s;
 }
 
+/* Hero 3D floating animation */
+@keyframes hero-float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-8px) translateX(3px);
+  }
+  50% {
+    transform: translateY(-4px) translateX(-2px);
+  }
+  75% {
+    transform: translateY(-10px) translateX(1px);
+  }
+}
+
+@keyframes gold-shimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.hero-title-3d {
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.hero-text-3d {
+  transform-style: preserve-3d;
+}
+
+.hero-text-5 {
+  transform-style: preserve-3d;
+}
+
 /* Hyperspeed background */
 .hyperspeed-tunnel {
   position: absolute;
