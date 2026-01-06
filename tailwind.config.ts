@@ -13,6 +13,10 @@ export default {
       },
     },
     extend: {
+      fontFamily: {
+        display: ['Orbitron', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -57,6 +61,23 @@ export default {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
+        cyber: {
+          cyan: "hsl(var(--cyber-cyan))",
+          magenta: "hsl(var(--cyber-magenta))",
+          blue: "hsl(var(--cyber-blue))",
+        },
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          dark: "hsl(var(--gold-dark))",
+        },
+        navy: {
+          deep: "hsl(var(--navy-deep))",
+          mid: "hsl(var(--navy-mid))",
+        },
+        hero: {
+          bg: "hsl(var(--hero-bg))",
+          foreground: "hsl(var(--hero-foreground))",
+        },
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -80,10 +101,15 @@ export default {
             height: "0",
           },
         },
+        marquee: {
+          '0%': { transform: 'translateX(0%)' },
+          '100%': { transform: 'translateX(-50%)' },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        marquee: 'marquee 30s linear infinite',
       },
     },
   },
