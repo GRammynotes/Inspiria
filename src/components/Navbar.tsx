@@ -36,45 +36,71 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Premium Logo */}
-        <a href="#home" className="group flex items-center gap-3">
-          {/* Logo emblem */}
-          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-gold flex items-center justify-center">
-            <span className="text-white font-bold text-sm">I</span>
-          </div>
-          {/* Logo text - premium serif style */}
-          <span 
-            className="text-2xl font-semibold tracking-[0.15em] uppercase transition-all duration-300 group-hover:text-gold"
+        <a href="#home" className="group flex items-center gap-2">
+          {/* Logo emblem - hexagon style */}
+          <div 
+            className="relative w-10 h-10 flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
             style={{
-              fontFamily: "'Orbitron', sans-serif",
-              background: 'linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #ffffff 100%)',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              textShadow: '0 0 30px rgba(255,255,255,0.1)',
+              background: 'linear-gradient(135deg, hsl(270 70% 50%) 0%, hsl(45 90% 55%) 100%)',
+              clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
             }}
           >
-            Inspiria
-          </span>
-          {/* Subtle gold accent dot */}
-          <span 
-            className="w-1.5 h-1.5 rounded-full opacity-80 group-hover:opacity-100 transition-opacity"
-            style={{ background: 'linear-gradient(135deg, #ffcc00, #ffd700)' }}
-          />
+            <div 
+              className="absolute inset-[2px] flex items-center justify-center"
+              style={{
+                background: 'hsl(220 60% 8%)',
+                clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
+              }}
+            >
+              <span 
+                className="font-display font-bold text-lg"
+                style={{
+                  background: 'linear-gradient(135deg, #ffffff, #ffcc00)',
+                  WebkitBackgroundClip: 'text',
+                  backgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                }}
+              >
+                I
+              </span>
+            </div>
+          </div>
+          {/* Logo text */}
+          <div className="flex flex-col -space-y-1">
+            <span 
+              className="font-display text-xl font-bold tracking-[0.2em] uppercase transition-all duration-300"
+              style={{
+                background: 'linear-gradient(90deg, #ffffff 0%, #ffcc00 100%)',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+              }}
+            >
+              INSPIRIA
+            </span>
+            <span 
+              className="text-[8px] tracking-[0.3em] uppercase opacity-60"
+              style={{ color: 'hsl(45, 90%, 55%)' }}
+            >
+              5.0
+            </span>
+          </div>
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden lg:flex items-center gap-8">
+        <div className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-all duration-300 hover:text-gold relative ${
+              className={`nav-link text-sm font-medium transition-all duration-300 relative px-3 py-2 rounded-lg ${
                 activeSection === link.href.slice(1)
-                  ? 'text-gold'
-                  : 'text-white/70 hover:text-white'
+                  ? 'text-gold bg-white/5'
+                  : 'text-white/70 hover:text-white hover:bg-white/5'
               }`}
             >
               {link.label}
+              <span className="nav-link-underline" />
             </a>
           ))}
           <ClickSpark
@@ -85,9 +111,10 @@ export const Navbar = () => {
             duration={500}
           >
             <Button
-              className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-2 rounded-full border-0 shadow-lg shadow-primary/20"
+              className="relative overflow-hidden bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-white font-bold px-6 py-2 rounded-full border border-white/10 shadow-lg shadow-primary/30 transition-all duration-300 hover:scale-105 hover:shadow-primary/50"
             >
-              REGISTER
+              <span className="relative z-10">REGISTER</span>
+              <div className="absolute inset-0 bg-gradient-to-r from-gold/20 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
             </Button>
           </ClickSpark>
         </div>
