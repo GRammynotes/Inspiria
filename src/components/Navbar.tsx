@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
+import { ClickSpark } from '@/components/effects';
 
 const navLinks = [
   { href: '#home', label: 'Home' },
@@ -56,12 +57,20 @@ export const Navbar = () => {
               {link.label}
             </a>
           ))}
-          <Button
-            variant="outline"
-            className="border-primary bg-primary text-white hover:bg-primary/90 hover:text-white font-semibold px-6 rounded-full"
+          <ClickSpark
+            sparkColor="#ffcc00"
+            sparkSize={10}
+            sparkRadius={35}
+            sparkCount={8}
+            duration={500}
           >
-            REGISTER
-          </Button>
+            <Button
+              variant="outline"
+              className="border-primary bg-primary text-white hover:bg-primary/90 hover:text-white font-semibold px-6 rounded-full"
+            >
+              REGISTER
+            </Button>
+          </ClickSpark>
         </div>
 
         {/* Mobile Menu Button */}
@@ -87,12 +96,20 @@ export const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <Button
-              variant="outline"
-              className="border-primary bg-primary text-white hover:bg-primary/90 font-semibold w-full rounded-full mt-2"
+            <ClickSpark
+              sparkColor="#ffcc00"
+              sparkSize={10}
+              sparkRadius={35}
+              sparkCount={8}
+              duration={500}
             >
-              REGISTER
-            </Button>
+              <Button
+                variant="outline"
+                className="border-primary bg-primary text-white hover:bg-primary/90 font-semibold w-full rounded-full mt-2"
+              >
+                REGISTER
+              </Button>
+            </ClickSpark>
           </div>
         </div>
       )}
