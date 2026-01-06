@@ -1,6 +1,10 @@
 import { Button } from '@/components/ui/button';
 import { useEffect, useState, useRef } from 'react';
 import { ClickSpark, HyperspeedBackground } from '@/components/effects';
+import { CountdownTimer } from '@/components/CountdownTimer';
+
+// Event date - February 15, 2025
+const EVENT_DATE = new Date('2025-02-15T09:00:00');
 
 export const HeroSection = () => {
   const [mounted, setMounted] = useState(false);
@@ -125,6 +129,11 @@ export const HeroSection = () => {
         >
           Innovate. Integrate. Inspire.
         </p>
+
+        {/* Countdown Timer */}
+        <div className="mb-10">
+          <CountdownTimer targetDate={EVENT_DATE} />
+        </div>
 
         {/* Button - solid, bold, premium, no glass */}
         <div
