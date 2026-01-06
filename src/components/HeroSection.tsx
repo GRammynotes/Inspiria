@@ -39,17 +39,17 @@ export const HeroSection = () => {
       {/* Sharp Hyperspeed + GridScan Background - NO BLUR */}
       <HyperspeedBackground />
 
-      {/* Floating particles */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+      {/* Floating particles - slower on hover */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none hero-particles">
         {[...Array(30)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-cyber-cyan/50 rounded-full animate-float"
+            className="absolute w-1 h-1 bg-cyber-cyan/50 rounded-full particle-float"
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
               animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${3 + Math.random() * 2}s`,
+              animationDuration: `${5 + Math.random() * 3}s`,
             }}
           />
         ))}
@@ -73,16 +73,16 @@ export const HeroSection = () => {
           Annual Techno-Management Symposium
         </p>
 
-        {/* 3D Floating Title Container */}
+        {/* 3D Floating Title Container - Single Line */}
         <div 
-          className={`hero-title-3d ${mounted ? 'animate-fade-in-up animation-delay-100' : 'opacity-0'}`}
+          className={`hero-title-3d flex items-baseline justify-center gap-2 md:gap-4 ${mounted ? 'animate-fade-in-up animation-delay-100' : 'opacity-0'}`}
           style={{
             animation: mounted ? 'hero-float 6s ease-in-out infinite' : 'none',
           }}
         >
-          {/* INSPIRIA - Large, white, 3D extruded */}
+          {/* INSPIRIA - Dynamic sizing */}
           <h1 
-            className="font-display text-6xl md:text-8xl lg:text-9xl font-bold mb-2 hero-text-3d"
+            className="font-display text-[clamp(2.5rem,10vw,8rem)] font-bold hero-text-3d whitespace-nowrap"
             style={{
               color: 'white',
               textShadow: `
@@ -100,9 +100,9 @@ export const HeroSection = () => {
             INSPIRIA
           </h1>
 
-          {/* 5.0 - Gold, glowing, closer to camera */}
+          {/* 5.0 - Gold, dynamic sizing */}
           <span 
-            className="font-display text-6xl md:text-8xl lg:text-9xl font-bold hero-text-5"
+            className="font-display text-[clamp(2.5rem,10vw,8rem)] font-bold hero-text-5 whitespace-nowrap"
             style={{
               background: 'linear-gradient(135deg, #ffcc00 0%, #fff8dc 30%, #ffcc00 50%, #ffd700 70%, #ffcc00 100%)',
               backgroundSize: '200% 200%',
@@ -112,9 +112,6 @@ export const HeroSection = () => {
               filter: 'drop-shadow(0 0 30px rgba(255,204,0,0.6)) drop-shadow(0 0 60px rgba(255,204,0,0.3))',
               animation: 'gold-shimmer 3s ease-in-out infinite',
               transform: 'translateZ(60px) scale(1.05)',
-              display: 'inline-block',
-              position: 'relative',
-              marginLeft: '0.3em',
             }}
           >
             5.0
