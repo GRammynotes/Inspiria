@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Clock, Image as ImageIcon, User, Info } from 'lucide-react';
+import { BlurText } from '@/components/effects';
 
 const tabs = [
   { id: 'inspiria', label: 'INSPIRIA 4.0' },
@@ -164,7 +165,7 @@ export const EventSchedule = () => {
         {/* Section Title */}
         <div className="text-center mb-12">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
-            Event Schedule
+            <BlurText delay={100}>Event Schedule</BlurText>
           </h2>
           <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
         </div>
