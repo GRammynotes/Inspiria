@@ -1,6 +1,12 @@
-export { GradientText } from './GradientText';
 export { ClickSpark } from './ClickSpark';
 export { SplashCursor } from './SplashCursor';
 export { BlurText } from './BlurText';
 export { HyperspeedBackground } from './HyperspeedBackground';
 export { default as LightRays } from './LightRays';
+export { default as Hyperspeed } from './Hyperspeed';
+export { default as SparklesText } from './SparklesText';
+export { default as GridScan } from './GridScan';
+export { default as PixelCard } from './PixelCard';
+export { default as ShinyText } from './ShinyText';
+export { default as TrueFocus } from './TrueFocus';
+export { default as GradientText } from './GradientText';

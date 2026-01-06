@@ -1,10 +1,48 @@
 import { Button } from '@/components/ui/button';
 import { useEffect, useState, useRef } from 'react';
-import { ClickSpark, HyperspeedBackground, LightRays } from '@/components/effects';
+import { ClickSpark, HyperspeedBackground, LightRays, Hyperspeed, SparklesText, ShinyText } from '@/components/effects';
 import { CountdownTimer } from '@/components/CountdownTimer';
 
 // Event date - February 15, 2025
 const EVENT_DATE = new Date('2025-02-15T09:00:00');
+
+const hyperspeedOptions = {
+  onSpeedUp: () => { },
+  onSlowDown: () => { },
+  distortion: 'turbulentDistortion',
+  length: 400,
+  roadWidth: 10,
+  islandWidth: 2,
+  lanesPerRoad: 4,
+  fov: 90,
+  fovSpeedUp: 150,
+  speedUp: 2,
+  carLightsFade: 0.4,
+  totalSideLightSticks: 20,
+  lightPairsPerRoadWay: 40,
+  shoulderLinesWidthPercentage: 0.05,
+  brokenLinesWidthPercentage: 0.1,
+  brokenLinesLengthPercentage: 0.5,
+  lightStickWidth: [0.12, 0.5],
+  lightStickHeight: [1.3, 1.7],
+  movingAwaySpeed: [60, 80],
+  movingCloserSpeed: [-120, -160],
+  carLightsLength: [400 * 0.03, 400 * 0.2],
+  carLightsRadius: [0.05, 0.14],
+  carWidthPercentage: [0.3, 0.5],
+  carShiftX: [-0.8, 0.8],
+  carFloorSeparation: [0, 5],
+  colors: {
+    roadColor: 0x080808,
+    islandColor: 0x0a0a0a,
+    background: 0x000000,
+    shoulderLines: 0xFFFFFF,
+    brokenLines: 0xFFFFFF,
+    leftCars: [0xD856BF, 0x6750A2, 0xC247AC],
+    rightCars: [0x03B3C3, 0x0E5EA5, 0x324555],
+    sticks: 0x03B3C3,
+  }
+};
 
 export const HeroSection = () => {
   const [mounted, setMounted] = useState(false);
@@ -38,7 +76,7 @@ export const HeroSection = () => {
     >
       {/* Sharp Hyperspeed + GridScan Background - NO BLUR */}
       {/* Sharp Hyperspeed + GridScan Background - NO BLUR */}
-      <HyperspeedBackground />
+      {/* HyperspeedBackground removed for performance optimization, using Hyperspeed component instead */}
 
       <div style={{ width: '100%', height: '600px', position: 'absolute', top: 0, left: 0, zIndex: 10, display: 'flex', justifyContent: 'center' }}>
         <LightRays
@@ -55,17 +93,25 @@ export const HeroSection = () => {
         />
       </div>
 
+      {/* Hyperspeed Effect - Centered Background Layer */}
+      <div style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%', zIndex: 1, pointerEvents: 'none', opacity: 0.6 }}>
+        <Hyperspeed effectOptions={hyperspeedOptions} />
+      </div>
+
       {/* Floating particles - slower on hover */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hero-particles">
-        {[...Array(30)].map((_, i) => (
+        {[...Array(120)].map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-1 bg-cyber-cyan/50 rounded-full particle-float"
+            className={`absolute rounded-full particle-float ${Math.random() > 0.5 ? 'bg-cyber-cyan/50' : 'bg-gold/40'}`}
             style={{
               left: `${Math.random() * 100}%`,
               top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 3}s`,
-              animationDuration: `${5 + Math.random() * 3}s`,
+              width: `${Math.random() * 3 + 1}px`,
+              height: `${Math.random() * 3 + 1}px`,
+              animationDelay: `${Math.random() * 5}s`,
+              animationDuration: `${3 + Math.random() * 5}s`,
+              opacity: Math.random() * 0.7 + 0.3,
             }}
           />
         ))}
@@ -112,24 +158,29 @@ export const HeroSection = () => {
               transform: 'translateZ(20px)',
             }}
           >
-            INSPIRIA
+            <SparklesText colors={['#FFC700', '#FFD700', '#ffffff']}>
+              <ShinyText text="INSPIRIA" disabled={false} speed={3} className="" />
+            </SparklesText>
           </h1>
 
           {/* 5.0 - Gold, dynamic sizing */}
-          <span
-            className="font-display text-[clamp(2.5rem,10vw,8rem)] font-bold hero-text-5 whitespace-nowrap"
-            style={{
-              background: 'linear-gradient(135deg, #ffcc00 0%, #fff8dc 30%, #ffcc00 50%, #ffd700 70%, #ffcc00 100%)',
-              backgroundSize: '200% 200%',
-              WebkitBackgroundClip: 'text',
-              backgroundClip: 'text',
-              WebkitTextFillColor: 'transparent',
-              filter: 'drop-shadow(0 0 30px rgba(255,204,0,0.6)) drop-shadow(0 0 60px rgba(255,204,0,0.3))',
-              animation: 'gold-shimmer 3s ease-in-out infinite',
-              transform: 'translateZ(60px) scale(1.05)',
-            }}
-          >
-            5.0
+          <span className="font-display text-[clamp(2.5rem,10vw,8rem)] font-bold hero-text-5 whitespace-nowrap">
+            <SparklesText
+              colors={['#FFC700', '#FFD700', '#FFA500']}
+              style={{
+                background: 'linear-gradient(135deg, #ffcc00 0%, #fff8dc 30%, #ffcc00 50%, #ffd700 70%, #ffcc00 100%)',
+                backgroundSize: '200% 200%',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                filter: 'drop-shadow(0 0 30px rgba(255,204,0,0.6)) drop-shadow(0 0 60px rgba(255,204,0,0.3))',
+                animation: 'gold-shimmer 3s ease-in-out infinite',
+                transform: 'translateZ(60px) scale(1.05)',
+                display: 'inline-block'
+              }}
+            >
+              5.0
+            </SparklesText>
           </span>
         </div>
 
@@ -174,6 +225,9 @@ export const HeroSection = () => {
           <div className="w-1 h-3 bg-white/40 rounded-full animate-pulse" />
         </div>
       </div>
+
+      {/* Smooth transition gradient */}
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
     </section>
   );
 };

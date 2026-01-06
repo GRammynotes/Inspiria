@@ -1,5 +1,5 @@
 import { Quote } from 'lucide-react';
-import { BlurText } from '@/components/effects';
+import { BlurText, PixelCard, GradientText } from '@/components/effects';
 
 const testimonials = [
   {
@@ -35,16 +35,22 @@ const testimonials = [
 ];
 
 const TestimonialCard = ({ quote, name, branch }: { quote: string; name: string; branch: string }) => (
-  <div className="glass-dark rounded-2xl p-6 md:p-8 shadow-lg min-w-[300px] md:min-w-[350px] mx-3 card-hover">
-    <Quote className="w-8 h-8 text-accent/30 mb-4" />
-    <p className="text-muted-foreground leading-relaxed mb-6 text-sm md:text-base">
-      {quote}
-    </p>
-    <Quote className="w-8 h-8 text-accent/30 ml-auto mb-4 rotate-180" />
-    <div className="border-t pt-4">
-      <h4 className="font-semibold text-foreground uppercase tracking-wide text-sm">{name}</h4>
-      <p className="text-accent font-medium text-sm">{branch}</p>
-    </div>
+  <div className="min-w-[300px] md:min-w-[350px] mx-3 h-[300px]">
+    <PixelCard variant="default" className="group w-full h-full rounded-2xl overflow-hidden glass-dark border-0">
+      <div className="absolute inset-0 flex flex-col p-6 md:p-8 justify-between z-10 hover:text-white transition-colors duration-300">
+        <div>
+          <Quote className="w-8 h-8 text-accent/30 group-hover:text-accent mb-4 transition-colors duration-300" />
+          <p className="text-muted-foreground group-hover:text-primary-foreground leading-relaxed text-sm md:text-base transition-colors duration-300">
+            {quote}
+          </p>
+          <Quote className="w-8 h-8 text-accent/30 group-hover:text-accent ml-auto rotate-180 transition-colors duration-300" />
+        </div>
+        <div className="border-t border-white/10 pt-4 mt-auto">
+          <h4 className="font-semibold text-foreground group-hover:text-primary-foreground uppercase tracking-wide text-sm transition-colors duration-300">{name}</h4>
+          <p className="text-accent font-medium text-sm">{branch}</p>
+        </div>
+      </div>
+    </PixelCard>
   </div>
 );
 
@@ -52,12 +58,18 @@ export const Testimonials = () => {
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section className="py-20 md:py-28 bg-muted/30 overflow-hidden">
+    <section className="relative py-20 md:py-28 bg-background overflow-hidden">
+      {/* Top Transition Gradient */}
+      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-background to-transparent z-20 pointer-events-none" />
       <div className="container mx-auto px-4 mb-12">
         {/* Section Title */}
         <div className="text-center">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
-            <BlurText delay={100}>Testimonials</BlurText>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-2">
+            <BlurText delay={100}>
+              <GradientText colors={['#FFD700', '#FFA500', '#FFED4E', '#FFD700']} direction="135deg">
+                Testimonials
+              </GradientText>
+            </BlurText>
           </h2>
           <div className="w-16 h-1 bg-accent mx-auto rounded-full mb-4" />
           <h3 className="text-xl md:text-2xl font-semibold text-foreground">

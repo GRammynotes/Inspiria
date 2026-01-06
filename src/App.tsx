@@ -3,7 +3,7 @@ import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { SplashCursor } from "@/components/effects";
+import { SplashCursor, ClickSpark } from "@/components/effects";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
@@ -14,11 +14,20 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <SplashCursor 
-        color="rgba(191, 0, 255, 0.15)" 
-        size={25} 
-        opacity={0.3} 
+      <SplashCursor
+        color="rgba(191, 0, 255, 0.15)"
+        size={25}
+        opacity={0.3}
       />
+      <div className="fixed inset-0 pointer-events-none z-[9999]">
+        <ClickSpark
+          sparkColor="#ffcc00"
+          sparkSize={10}
+          sparkRadius={20}
+          sparkCount={8}
+          duration={400}
+        />
+      </div>
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />

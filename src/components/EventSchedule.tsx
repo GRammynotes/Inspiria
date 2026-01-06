@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Clock, Image as ImageIcon, User, Info } from 'lucide-react';
-import { BlurText } from '@/components/effects';
+import { BlurText, GridScan, TrueFocus } from '@/components/effects';
 
 const tabs = [
   { id: 'inspiria', label: 'INSPIRIA 4.0' },
@@ -57,7 +57,7 @@ export const EventSchedule = () => {
                 </div>
                 {/* Content */}
                 <div className="p-8 md:p-10 flex flex-col justify-center">
-                  <h3 className="text-2xl md:text-3xl font-display font-bold text-primary mb-4">
+                  <h3 className="text-2xl md:text-3xl font-display font-bold text-gradient-gold mb-4">
                     Welcome to Inspiria 4.0
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
@@ -78,16 +78,16 @@ export const EventSchedule = () => {
         return (
           <div className="grid gap-4">
             {events.map((event, index) => (
-              <Card key={index} className="card-hover glass-dark border-0 shadow-md">
+              <Card key={index} className="card-hover glass-dark border-0 shadow-md group">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
-                    <div className="flex items-center gap-2 text-primary font-semibold min-w-[120px]">
+                    <div className="flex items-center gap-2 text-primary font-semibold min-w-[120px] transition-colors duration-300 group-hover:text-accent">
                       <Clock className="w-4 h-4" />
                       {event.time}
                     </div>
                     <div>
-                      <h4 className="font-semibold text-foreground text-lg">{event.title}</h4>
-                      <p className="text-muted-foreground text-sm mt-1">{event.description}</p>
+                      <h4 className="font-semibold text-foreground text-lg transition-colors duration-300 group-hover:text-primary-foreground">{event.title}</h4>
+                      <p className="text-muted-foreground text-sm mt-1 transition-colors duration-300 group-hover:text-white/90">{event.description}</p>
                     </div>
                   </div>
                 </CardContent>
@@ -116,14 +116,14 @@ export const EventSchedule = () => {
         return (
           <div className="grid md:grid-cols-3 gap-6">
             {speakers.map((speaker, index) => (
-              <Card key={index} className="card-hover glass-dark border-0 shadow-md text-center">
+              <Card key={index} className="card-hover glass-dark border-0 shadow-md text-center group">
                 <CardContent className="p-6">
-                  <div className="w-24 h-24 mx-auto bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center mb-4">
-                    <User className="w-10 h-10 text-primary" />
+                  <div className="w-24 h-24 mx-auto bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">
+                    <User className="w-10 h-10 text-primary transition-colors duration-300 group-hover:text-primary-foreground" />
                   </div>
-                  <h4 className="font-semibold text-lg text-foreground">{speaker.name}</h4>
-                  <p className="text-primary text-sm font-medium">{speaker.company}</p>
-                  <p className="text-muted-foreground text-sm mt-2">{speaker.description}</p>
+                  <h4 className="font-semibold text-lg text-foreground transition-colors duration-300 group-hover:text-primary-foreground">{speaker.name}</h4>
+                  <p className="text-primary text-sm font-medium transition-colors duration-300 group-hover:text-accent-foreground">{speaker.company}</p>
+                  <p className="text-muted-foreground text-sm mt-2 transition-colors duration-300 group-hover:text-white/90">{speaker.description}</p>
                 </CardContent>
               </Card>
             ))}
@@ -135,13 +135,13 @@ export const EventSchedule = () => {
           <Card className="glass-dark border-0 shadow-lg overflow-hidden">
             <CardContent className="p-0">
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-8 flex items-center justify-center min-h-[250px]">
-                  <div className="w-32 h-32 bg-primary/20 rounded-xl flex items-center justify-center">
-                    <Info className="w-12 h-12 text-accent" />
+                <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-8 flex items-center justify-center min-h-[250px] group">
+                  <div className="w-32 h-32 bg-primary/20 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
+                    <Info className="w-12 h-12 text-accent transition-colors duration-300 group-hover:text-primary-foreground" />
                   </div>
                 </div>
                 <div className="p-8 flex flex-col justify-center">
-                  <h3 className="text-2xl font-display font-bold text-primary mb-4">About TPC-PCE</h3>
+                  <h3 className="text-2xl font-display font-bold text-gradient-gold mb-4">About TPC-PCE</h3>
                   <p className="text-muted-foreground leading-relaxed">
                     The Training and Placement Cell of PCE is dedicated to providing students with the best
                     opportunities to launch their careers. We bridge the gap between academia and industry,
@@ -160,8 +160,27 @@ export const EventSchedule = () => {
   };
 
   return (
-    <section id="schedule" className="py-20 md:py-28 bg-background">
-      <div className="container mx-auto px-4">
+    <section id="schedule" className="relative py-20 md:py-28 bg-background overflow-hidden">
+      {/* Top Transition Gradient */}
+      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-background to-transparent z-20 pointer-events-none" />
+
+      {/* Grid Scan Background */}
+      <div className="absolute inset-0 pointer-events-none">
+        <GridScan
+          sensitivity={0.55}
+          lineThickness={1}
+          linesColor="#392e4e"
+          gridScale={0.1}
+          scanColor="#FF9FFC"
+          scanOpacity={0.4}
+          enablePost
+          bloomIntensity={0.6}
+          chromaticAberration={0.002}
+          noiseIntensity={0.01}
+        />
+      </div>
+
+      <div className="container relative z-10 mx-auto px-4">
         {/* Section Title */}
         <div className="text-center mb-12">
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
@@ -172,18 +191,16 @@ export const EventSchedule = () => {
 
         {/* Tabs */}
         <div className="flex flex-wrap justify-center gap-2 md:gap-3 mb-10">
-          {tabs.map((tab) => (
-            <button
-              key={tab.id}
-              onClick={() => setActiveTab(tab.id)}
-              className={`px-4 md:px-6 py-2.5 rounded-lg text-xs md:text-sm font-semibold transition-all ${activeTab === tab.id
-                ? 'tab-active'
-                : 'bg-secondary text-muted-foreground hover:bg-primary/10 hover:text-primary'
-                }`}
-            >
-              {tab.label}
-            </button>
-          ))}
+          <TrueFocus
+            items={tabs.map(tab => tab.label)}
+            manualMode={true}
+            blurAmount={2}
+            borderColor="#FFD700"
+            glowColor="rgba(255, 215, 0, 0.6)"
+            animationDuration={0.6}
+            defaultIndex={0}
+            onIndexChange={(index) => setActiveTab(tabs[index].id)}
+          />
         </div>
 
         {/* Tab Content */}
@@ -191,6 +208,9 @@ export const EventSchedule = () => {
           {renderTabContent()}
         </div>
       </div>
+
+      {/* Bottom Transition Gradient */}
+      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent z-20 pointer-events-none" />
     </section>
   );
 };

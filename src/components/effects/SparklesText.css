@@ -1,0 +1,17 @@
+.animate-sparkle {
+    position: absolute;
+    pointer-events: none;
+    animation: sparkle-kf 750ms cubic-bezier(0.25, 1, 0.5, 1) forwards;
+}
+
+@keyframes sparkle-kf {
+    0% {
+        transform: scale(0) rotate(0deg);
+        opacity: 1;
+    }
+
+    100% {
+        transform: scale(1) rotate(180deg);
+        opacity: 0;
+    }
+}
