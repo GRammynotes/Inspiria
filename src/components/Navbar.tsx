@@ -35,11 +35,31 @@ export const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
-        {/* Logo */}
-        <a href="#home" className="flex items-center gap-2">
-          <span className="font-display text-2xl font-bold text-white tracking-wider">
-            inspiria
+        {/* Premium Logo */}
+        <a href="#home" className="group flex items-center gap-3">
+          {/* Logo emblem */}
+          <div className="w-8 h-8 rounded-full bg-gradient-to-br from-primary to-gold flex items-center justify-center">
+            <span className="text-white font-bold text-sm">I</span>
+          </div>
+          {/* Logo text - premium serif style */}
+          <span 
+            className="text-2xl font-semibold tracking-[0.15em] uppercase transition-all duration-300 group-hover:text-gold"
+            style={{
+              fontFamily: "'Orbitron', sans-serif",
+              background: 'linear-gradient(135deg, #ffffff 0%, #e0e0e0 50%, #ffffff 100%)',
+              WebkitBackgroundClip: 'text',
+              backgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              textShadow: '0 0 30px rgba(255,255,255,0.1)',
+            }}
+          >
+            Inspiria
           </span>
+          {/* Subtle gold accent dot */}
+          <span 
+            className="w-1.5 h-1.5 rounded-full opacity-80 group-hover:opacity-100 transition-opacity"
+            style={{ background: 'linear-gradient(135deg, #ffcc00, #ffd700)' }}
+          />
         </a>
 
         {/* Desktop Navigation */}
@@ -48,10 +68,10 @@ export const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className={`text-sm font-medium transition-colors hover:text-gold ${
+              className={`text-sm font-medium transition-all duration-300 hover:text-gold relative ${
                 activeSection === link.href.slice(1)
                   ? 'text-gold'
-                  : 'text-white/80'
+                  : 'text-white/70 hover:text-white'
               }`}
             >
               {link.label}
@@ -65,8 +85,7 @@ export const Navbar = () => {
             duration={500}
           >
             <Button
-              variant="outline"
-              className="border-primary bg-primary text-white hover:bg-primary/90 hover:text-white font-semibold px-6 rounded-full"
+              className="bg-primary hover:bg-primary/90 text-white font-semibold px-6 py-2 rounded-full border-0 shadow-lg shadow-primary/20"
             >
               REGISTER
             </Button>
@@ -104,8 +123,7 @@ export const Navbar = () => {
               duration={500}
             >
               <Button
-                variant="outline"
-                className="border-primary bg-primary text-white hover:bg-primary/90 font-semibold w-full rounded-full mt-2"
+                className="bg-primary hover:bg-primary/90 text-white font-semibold w-full rounded-full mt-2"
               >
                 REGISTER
               </Button>
