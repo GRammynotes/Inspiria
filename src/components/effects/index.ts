@@ -3,3 +3,4 @@ export { ClickSpark } from './ClickSpark';
 export { SplashCursor } from './SplashCursor';
 export { BlurText } from './BlurText';
 export { HyperspeedBackground } from './HyperspeedBackground';
+export { default as LightRays } from './LightRays';

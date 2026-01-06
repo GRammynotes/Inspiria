@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { useEffect, useState, useRef } from 'react';
-import { ClickSpark, HyperspeedBackground } from '@/components/effects';
+import { ClickSpark, HyperspeedBackground, LightRays } from '@/components/effects';
 import { CountdownTimer } from '@/components/CountdownTimer';
 
 // Event date - February 15, 2025
@@ -31,13 +31,29 @@ export const HeroSection = () => {
   }, []);
 
   return (
-    <section 
+    <section
       ref={heroRef}
-      id="home" 
+      id="home"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
     >
       {/* Sharp Hyperspeed + GridScan Background - NO BLUR */}
+      {/* Sharp Hyperspeed + GridScan Background - NO BLUR */}
       <HyperspeedBackground />
+
+      <div style={{ width: '100%', height: '600px', position: 'absolute', top: 0, left: 0, zIndex: 10, display: 'flex', justifyContent: 'center' }}>
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#ffffff"
+          raysSpeed={1.5}
+          lightSpread={0.8}
+          rayLength={1.2}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.05}
+          className="custom-rays"
+        />
+      </div>
 
       {/* Floating particles - slower on hover */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none hero-particles">
@@ -56,7 +72,7 @@ export const HeroSection = () => {
       </div>
 
       {/* Hero Content - 3D Floating Effect */}
-      <div 
+      <div
         className="relative z-20 text-center px-4 max-w-5xl mx-auto"
         style={{
           transform: `perspective(1000px) rotateX(${mousePos.y * 0.5}deg) rotateY(${mousePos.x * 0.5}deg)`,
@@ -65,23 +81,22 @@ export const HeroSection = () => {
       >
         {/* Small tagline - flat, gold, not 3D */}
         <p
-          className={`text-xs md:text-sm tracking-[0.5em] uppercase mb-8 font-medium ${
-            mounted ? 'animate-fade-in-up' : 'opacity-0'
-          }`}
+          className={`text-xs md:text-sm tracking-[0.5em] uppercase mb-8 font-medium ${mounted ? 'animate-fade-in-up' : 'opacity-0'
+            }`}
           style={{ color: 'hsl(45, 90%, 55%)' }}
         >
           Annual Techno-Management Symposium
         </p>
 
         {/* 3D Floating Title Container - Single Line */}
-        <div 
+        <div
           className={`hero-title-3d flex items-baseline justify-center gap-2 md:gap-4 ${mounted ? 'animate-fade-in-up animation-delay-100' : 'opacity-0'}`}
           style={{
             animation: mounted ? 'hero-float 6s ease-in-out infinite' : 'none',
           }}
         >
           {/* INSPIRIA - Dynamic sizing */}
-          <h1 
+          <h1
             className="font-display text-[clamp(2.5rem,10vw,8rem)] font-bold hero-text-3d whitespace-nowrap"
             style={{
               color: 'white',
@@ -101,7 +116,7 @@ export const HeroSection = () => {
           </h1>
 
           {/* 5.0 - Gold, dynamic sizing */}
-          <span 
+          <span
             className="font-display text-[clamp(2.5rem,10vw,8rem)] font-bold hero-text-5 whitespace-nowrap"
             style={{
               background: 'linear-gradient(135deg, #ffcc00 0%, #fff8dc 30%, #ffcc00 50%, #ffd700 70%, #ffcc00 100%)',
@@ -120,9 +135,8 @@ export const HeroSection = () => {
 
         {/* Subtitle - calm, elegant, not animated */}
         <p
-          className={`text-lg md:text-xl text-white/60 italic mt-8 mb-12 font-light tracking-widest ${
-            mounted ? 'animate-fade-in-up animation-delay-200' : 'opacity-0'
-          }`}
+          className={`text-lg md:text-xl text-white/60 italic mt-8 mb-12 font-light tracking-widest ${mounted ? 'animate-fade-in-up animation-delay-200' : 'opacity-0'
+            }`}
         >
           Innovate. Integrate. Inspire.
         </p>
@@ -134,9 +148,8 @@ export const HeroSection = () => {
 
         {/* Button - solid, bold, premium, no glass */}
         <div
-          className={`${
-            mounted ? 'animate-fade-in-up animation-delay-300' : 'opacity-0'
-          }`}
+          className={`${mounted ? 'animate-fade-in-up animation-delay-300' : 'opacity-0'
+            }`}
         >
           <ClickSpark
             sparkColor="#ffcc00"

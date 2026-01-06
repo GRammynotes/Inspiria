@@ -41,7 +41,7 @@ export const EventSchedule = () => {
     switch (activeTab) {
       case 'inspiria':
         return (
-          <Card className="bg-gradient-to-br from-secondary to-white border-0 shadow-lg overflow-hidden">
+          <Card className="glass-dark border-0 shadow-lg overflow-hidden">
             <CardContent className="p-0">
               <div className="grid md:grid-cols-2 gap-0">
                 {/* Poster placeholder */}
@@ -61,9 +61,9 @@ export const EventSchedule = () => {
                     Welcome to Inspiria 4.0
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    Inspiria is a testament to revolution and progress. It's a rendezvous of innovation and inspiration, 
-                    where students gain valuable insights helping them develop the right mindset. Inspiria also aims to 
-                    bridge the gap between academic learning and real-world application. It is an immersive event that 
+                    Inspiria is a testament to revolution and progress. It's a rendezvous of innovation and inspiration,
+                    where students gain valuable insights helping them develop the right mindset. Inspiria also aims to
+                    bridge the gap between academic learning and real-world application. It is an immersive event that
                     seamlessly blends professional development and technical expertise.
                   </p>
                 </div>
@@ -78,7 +78,7 @@ export const EventSchedule = () => {
         return (
           <div className="grid gap-4">
             {events.map((event, index) => (
-              <Card key={index} className="card-hover bg-white border-0 shadow-md">
+              <Card key={index} className="card-hover glass-dark border-0 shadow-md">
                 <CardContent className="p-6">
                   <div className="flex items-start gap-4">
                     <div className="flex items-center gap-2 text-primary font-semibold min-w-[120px]">
@@ -116,7 +116,7 @@ export const EventSchedule = () => {
         return (
           <div className="grid md:grid-cols-3 gap-6">
             {speakers.map((speaker, index) => (
-              <Card key={index} className="card-hover bg-white border-0 shadow-md text-center">
+              <Card key={index} className="card-hover glass-dark border-0 shadow-md text-center">
                 <CardContent className="p-6">
                   <div className="w-24 h-24 mx-auto bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center mb-4">
                     <User className="w-10 h-10 text-primary" />
@@ -132,20 +132,20 @@ export const EventSchedule = () => {
 
       case 'about':
         return (
-          <Card className="bg-white border-0 shadow-lg overflow-hidden">
+          <Card className="glass-dark border-0 shadow-lg overflow-hidden">
             <CardContent className="p-0">
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-8 flex items-center justify-center min-h-[250px]">
                   <div className="w-32 h-32 bg-primary/20 rounded-xl flex items-center justify-center">
-                    <Info className="w-12 h-12 text-primary" />
+                    <Info className="w-12 h-12 text-accent" />
                   </div>
                 </div>
                 <div className="p-8 flex flex-col justify-center">
                   <h3 className="text-2xl font-display font-bold text-primary mb-4">About TPC-PCE</h3>
                   <p className="text-muted-foreground leading-relaxed">
-                    The Training and Placement Cell of PCE is dedicated to providing students with the best 
-                    opportunities to launch their careers. We bridge the gap between academia and industry, 
-                    preparing students for the professional world through skill development, internships, 
+                    The Training and Placement Cell of PCE is dedicated to providing students with the best
+                    opportunities to launch their careers. We bridge the gap between academia and industry,
+                    preparing students for the professional world through skill development, internships,
                     and placement drives.
                   </p>
                 </div>
@@ -167,7 +167,7 @@ export const EventSchedule = () => {
           <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
             <BlurText delay={100}>Event Schedule</BlurText>
           </h2>
-          <div className="w-16 h-1 bg-primary mx-auto rounded-full" />
+          <div className="w-16 h-1 bg-accent mx-auto rounded-full" />
         </div>
 
         {/* Tabs */}
@@ -176,11 +176,10 @@ export const EventSchedule = () => {
             <button
               key={tab.id}
               onClick={() => setActiveTab(tab.id)}
-              className={`px-4 md:px-6 py-2.5 rounded-lg text-xs md:text-sm font-semibold transition-all ${
-                activeTab === tab.id
-                  ? 'tab-active'
-                  : 'bg-secondary text-muted-foreground hover:bg-primary/10 hover:text-primary'
-              }`}
+              className={`px-4 md:px-6 py-2.5 rounded-lg text-xs md:text-sm font-semibold transition-all ${activeTab === tab.id
+                ? 'tab-active'
+                : 'bg-secondary text-muted-foreground hover:bg-primary/10 hover:text-primary'
+                }`}
             >
               {tab.label}
             </button>
