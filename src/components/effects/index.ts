@@ -10,3 +10,6 @@ export { default as PixelCard } from './PixelCard';
 export { default as ShinyText } from './ShinyText';
 export { default as TrueFocus } from './TrueFocus';
 export { default as GradientText } from './GradientText';
+export { default as MagicBento } from './MagicBento';
+export { default as Galaxy } from './Galaxy';
+export { default as AnimatedList } from './AnimatedList';

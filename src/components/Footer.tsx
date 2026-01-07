@@ -2,17 +2,17 @@ import { Phone, Mail, Instagram, Linkedin, Facebook } from 'lucide-react';
 
 export const Footer = () => {
   return (
-    <footer id="contact" className="bg-background border-t border-white/5 text-white py-16">
-      <div className="container mx-auto px-4">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8">
+    <footer id="contact" className="relative border-t border-white/5 text-white py-16 overflow-hidden">
+      <div className="container relative z-10 mx-auto px-4 text-center">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 justify-items-center">
           {/* Logo & Description */}
           <div>
-            <div className="flex items-center gap-3 mb-4">
+            <div className="flex items-center gap-3 mb-4 justify-center">
               <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center">
                 <span className="font-display font-bold text-lg text-accent">TPC</span>
               </div>
             </div>
-            <p className="text-white/70 text-sm leading-relaxed">
+            <p className="text-white/70 text-sm leading-relaxed mx-auto max-w-xs">
               Training and Placement Cell of PCE - Bridging the gap between academia and industry.
             </p>
           </div>
@@ -60,19 +60,18 @@ export const Footer = () => {
           <div>
             <h4 className="font-semibold text-accent mb-4">Contact</h4>
             <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-white/70 text-sm">
+              <li className="flex items-center gap-2 text-white/70 text-sm justify-center">
                 <Phone className="w-4 h-4" />
                 <span>022-27456100</span>
               </li>
-              <li className="flex items-center gap-2 text-white/70 text-sm">
+              <li className="flex items-center gap-2 text-white/70 text-sm justify-center">
                 <Phone className="w-4 h-4" />
                 <span>022-27482400</span>
               </li>
-              <li className="flex items-start gap-2 text-sm">
-                <Mail className="w-4 h-4 mt-0.5 text-accent" />
+              <li className="flex items-center gap-2 text-sm justify-center text-left">
+                <Mail className="w-4 h-4 text-accent" />
                 <div>
-                  <span className="text-accent">Email:</span>
-                  <br />
+                  <span className="text-accent">Email: </span>
                   <a href="mailto:studenttpc@mes.ac.in" className="text-white/70 hover:text-white transition-colors">
                     studenttpc@mes.ac.in
                   </a>
@@ -81,7 +80,7 @@ export const Footer = () => {
             </ul>
 
             {/* Social Icons */}
-            <div className="flex gap-4 mt-6">
+            <div className="flex gap-4 mt-6 justify-center">
               <a
                 href="#"
                 className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"

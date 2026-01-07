@@ -14,20 +14,8 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <SplashCursor
-        color="rgba(191, 0, 255, 0.15)"
-        size={25}
-        opacity={0.3}
-      />
-      <div className="fixed inset-0 pointer-events-none z-[9999]">
-        <ClickSpark
-          sparkColor="#ffcc00"
-          sparkSize={10}
-          sparkRadius={20}
-          sparkCount={8}
-          duration={400}
-        />
-      </div>
+      <SplashCursor />
+      <ClickSpark />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />

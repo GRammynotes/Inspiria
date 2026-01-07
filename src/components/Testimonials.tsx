@@ -1,5 +1,5 @@
 import { Quote } from 'lucide-react';
-import { BlurText, PixelCard, GradientText } from '@/components/effects';
+import { BlurText, PixelCard } from '@/components/effects';
 
 const testimonials = [
   {
@@ -39,11 +39,11 @@ const TestimonialCard = ({ quote, name, branch }: { quote: string; name: string;
     <PixelCard variant="default" className="group w-full h-full rounded-2xl overflow-hidden glass-dark border-0">
       <div className="absolute inset-0 flex flex-col p-6 md:p-8 justify-between z-10 hover:text-white transition-colors duration-300">
         <div>
-          <Quote className="w-8 h-8 text-accent/30 group-hover:text-accent mb-4 transition-colors duration-300" />
-          <p className="text-muted-foreground group-hover:text-primary-foreground leading-relaxed text-sm md:text-base transition-colors duration-300">
+          <Quote className="w-8 h-8 text-accent/30 group-hover:text-accent mb-4 transition-colors duration-300 rotate-180" />
+          <p className="text-[#FFD700] group-hover:text-white leading-relaxed text-sm md:text-base transition-colors duration-300 font-medium">
             {quote}
           </p>
-          <Quote className="w-8 h-8 text-accent/30 group-hover:text-accent ml-auto rotate-180 transition-colors duration-300" />
+          <Quote className="w-8 h-8 text-accent/30 group-hover:text-accent ml-auto transition-colors duration-300" />
         </div>
         <div className="border-t border-white/10 pt-4 mt-auto">
           <h4 className="font-semibold text-foreground group-hover:text-primary-foreground uppercase tracking-wide text-sm transition-colors duration-300">{name}</h4>
@@ -58,18 +58,24 @@ export const Testimonials = () => {
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section className="relative py-20 md:py-28 bg-background overflow-hidden">
-      {/* Top Transition Gradient */}
-      <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-background to-transparent z-20 pointer-events-none" />
-      <div className="container mx-auto px-4 mb-12">
+    <section className="relative py-20 md:py-28 overflow-hidden">
+      <div className="container relative z-10 mx-auto px-4 mb-12">
         {/* Section Title */}
         <div className="text-center">
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-2">
-            <BlurText delay={100}>
-              <GradientText colors={['#FFD700', '#FFA500', '#FFED4E', '#FFD700']} direction="135deg">
-                Testimonials
-              </GradientText>
-            </BlurText>
+            <span
+              className="relative inline-block"
+              style={{
+                background: 'linear-gradient(90deg, #FFD700, #FFA500, #FFED4E, #FFD700, #FFA500)',
+                backgroundSize: '200% 100%',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text',
+                animation: 'gold-shimmer 3s linear infinite'
+              }}
+            >
+              <BlurText delay={100}>Testimonials</BlurText>
+            </span>
           </h2>
           <div className="w-16 h-1 bg-accent mx-auto rounded-full mb-4" />
           <h3 className="text-xl md:text-2xl font-semibold text-foreground">
@@ -79,10 +85,10 @@ export const Testimonials = () => {
       </div>
 
       {/* Marquee Container */}
-      <div className="relative">
+      <div className="relative z-10">
         {/* Gradient overlays */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-muted/30 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-muted/30 to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-background/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-background/80 to-transparent z-10 pointer-events-none" />
 
         {/* Scrolling content */}
         <div className="flex animate-marquee">

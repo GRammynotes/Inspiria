@@ -1,12 +1,11 @@
 import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
 import { Clock, Image as ImageIcon, User, Info } from 'lucide-react';
-import { BlurText, GridScan, TrueFocus } from '@/components/effects';
+import { BlurText, GridScan, TrueFocus, MagicBento, AnimatedList } from '@/components/effects';
 
 const tabs = [
   { id: 'inspiria', label: 'INSPIRIA 4.0' },
-  { id: 'day1', label: 'DAY 1' },
-  { id: 'day2', label: 'DAY 2' },
+  { id: 'day1', label: 'EVENT TIMELINE' },
   { id: 'gallery', label: 'IMAGE GALLERY' },
   { id: 'speaker', label: 'PREVIOUS SPEAKER' },
   { id: 'about', label: 'ABOUT TPC-PCE' },
@@ -17,25 +16,32 @@ const day1Events = [
   { time: '11:00 AM', title: 'Keynote', description: 'Industry expert keynote session' },
   { time: '12:30 PM', title: 'Technical Session', description: 'Deep dive into latest technologies' },
   { time: '02:00 PM', title: 'Workshop', description: 'Hands-on technical workshop' },
+  { time: '03:30 PM', title: 'Panel Discussion', description: 'Industry leaders share insights' },
+  { time: '05:00 PM', title: 'Networking', description: 'Connect with peers and professionals' }
 ];
 
-const day2Events = [
-  { time: '10:00 AM', title: 'Panel Discussion', description: 'Industry leaders panel' },
-  { time: '11:30 AM', title: 'Competition Finals', description: 'Final round of tech competitions' },
-  { time: '01:30 PM', title: 'Networking Session', description: 'Connect with peers and mentors' },
-  { time: '03:00 PM', title: 'Valedictory', description: 'Closing ceremony and awards' },
-];
+
 
 const speakers = [
-  { name: 'Dr. Rajesh Kumar', company: 'Tech Innovations Ltd', description: 'AI & ML Expert' },
-  { name: 'Ms. Priya Sharma', company: 'Digital Solutions', description: 'Startup Mentor' },
-  { name: 'Mr. Amit Patel', company: 'Future Tech Corp', description: 'Industry Leader' },
+  {
+    name: 'Mr. Dinesh Kumar (Prof. Dineshkumar Gupta)',
+    company: 'Renowned Educator / Visionary Teacher',
+    eventTitle: 'From Classroom to Cubicle',
+    description: 'An inspiring session bridging the gap between academics and the corporate world, focusing on problem-solving skills, career insights, and professional growth using innovative teaching methods and strong digital presence.',
+    date: '25th February 2025',
+    time: '3:00 PM – 5:00 PM',
+    venue: 'Auditorium, Pillai College of Engineering, New Panvel',
+    organizer: 'Training & Placement Cell (TPC-PCE)',
+    image: '/images/dinesh-kumar.png'
+  }
 ];
 
 const testimonialImages = Array(8).fill(null);
 
 export const EventSchedule = () => {
   const [activeTab, setActiveTab] = useState('inspiria');
+  const [selectedSpeaker, setSelectedSpeaker] = useState<any>(null);
+  const [selectedGalleryImage, setSelectedGalleryImage] = useState<any>(null);
 
   const renderTabContent = () => {
     switch (activeTab) {
@@ -73,62 +79,216 @@ export const EventSchedule = () => {
         );
 
       case 'day1':
-      case 'day2':
-        const events = activeTab === 'day1' ? day1Events : day2Events;
-        return (
-          <div className="grid gap-4">
-            {events.map((event, index) => (
-              <Card key={index} className="card-hover glass-dark border-0 shadow-md group">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="flex items-center gap-2 text-primary font-semibold min-w-[120px] transition-colors duration-300 group-hover:text-accent">
-                      <Clock className="w-4 h-4" />
-                      {event.time}
-                    </div>
-                    <div>
-                      <h4 className="font-semibold text-foreground text-lg transition-colors duration-300 group-hover:text-primary-foreground">{event.title}</h4>
-                      <p className="text-muted-foreground text-sm mt-1 transition-colors duration-300 group-hover:text-white/90">{event.description}</p>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
+        const eventItems = day1Events.map((event, index) => (
+          <div key={index} className="flex items-start gap-4 p-2">
+            <div className="flex items-center gap-2 text-primary font-semibold min-w-[120px]">
+              <Clock className="w-4 h-4" />
+              {event.time}
+            </div>
+            <div>
+              <h4 className="font-semibold text-foreground text-lg">{event.title}</h4>
+              <p className="text-muted-foreground text-sm mt-1">{event.description}</p>
+            </div>
           </div>
+        ));
+
+        return (
+          <AnimatedList
+            items={eventItems}
+            enableArrowNavigation={false}
+            showGradients={true}
+            displayScrollbar={false}
+            className="max-w-3xl mx-auto"
+          />
         );
 
       case 'gallery':
+        const bentoCards = [
+          {
+            title: 'Keynote Session',
+            description: 'Prof. Dinesh Kumar sharing visionary insights on professional growth.',
+            label: 'Vision',
+            color: '#1a103d',
+            image: '/images/gallery-1.jpg'
+          },
+          {
+            title: 'Interactive Learning',
+            description: 'Engaging discussions bridging the gap between classroom and corporate life.',
+            label: 'Engage',
+            color: '#2d1b4e',
+            image: '/images/gallery-2.jpg'
+          },
+          {
+            title: 'Audience Focus',
+            description: 'Students absorbing transformative ideas for their future careers.',
+            label: 'Inspire',
+            color: '#1a103d',
+            image: '/images/gallery-3.jpg'
+          },
+          {
+            title: 'Expert Talk',
+            description: 'In-depth session exploring modern industry requirements.',
+            label: 'Growth',
+            color: '#2d1b4e',
+            image: '/images/gallery-4.jpg'
+          },
+          {
+            title: 'Special Recognition',
+            description: 'Honoring excellence and commitment to student development.',
+            label: 'Honored',
+            color: '#1a103d',
+            image: '/images/gallery-5.jpg'
+          },
+          {
+            title: 'Organizing Team',
+            description: 'The dedicated TPC-PCE team behind the successful event.',
+            label: 'Network',
+            color: '#2d1b4e',
+            image: '/images/gallery-1.jpg'
+          }
+        ];
+
         return (
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {testimonialImages.map((_, index) => (
-              <div
-                key={index}
-                className="aspect-square bg-gradient-to-br from-muted to-secondary rounded-xl flex items-center justify-center card-hover cursor-pointer group overflow-hidden"
-              >
-                <div className="text-muted-foreground group-hover:scale-110 transition-transform">
-                  <ImageIcon className="w-10 h-10" />
-                </div>
+          <div className="w-full relative py-4 group/carousel overflow-hidden">
+            {/* Left fade gradient */}
+            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none hidden md:block" />
+            {/* Right fade gradient */}
+            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none hidden md:block" />
+
+            <div className="flex animate-marquee-slow hover:[animation-play-state:paused] gap-8">
+              <div className="flex shrink-0">
+                <MagicBento
+                  cardData={bentoCards}
+                  spotlightRadius={610}
+                  enableTilt={true}
+                  enableMagnetism={true}
+                  glowColor="255, 215, 0"
+                  onCardClick={(card) => setSelectedGalleryImage(card)}
+                />
               </div>
-            ))}
+              <div className="flex shrink-0">
+                <MagicBento
+                  cardData={bentoCards}
+                  spotlightRadius={610}
+                  enableTilt={true}
+                  enableMagnetism={true}
+                  glowColor="255, 215, 0"
+                  onCardClick={(card) => setSelectedGalleryImage(card)}
+                />
+              </div>
+            </div>
           </div>
         );
 
       case 'speaker':
-        return (
-          <div className="grid md:grid-cols-3 gap-6">
-            {speakers.map((speaker, index) => (
-              <Card key={index} className="card-hover glass-dark border-0 shadow-md text-center group">
-                <CardContent className="p-6">
-                  <div className="w-24 h-24 mx-auto bg-gradient-to-br from-primary/20 to-accent/20 rounded-full flex items-center justify-center mb-4 transition-transform duration-300 group-hover:scale-110">
-                    <User className="w-10 h-10 text-primary transition-colors duration-300 group-hover:text-primary-foreground" />
+
+
+        if (selectedSpeaker) {
+          return (
+            <div className="animate-fade-in-up">
+              <button
+                onClick={() => setSelectedSpeaker(null)}
+                className="mb-6 flex items-center gap-2 text-primary hover:text-accent transition-colors"
+              >
+                ← Back to Speakers
+              </button>
+
+              <Card className="glass-dark border-0 shadow-lg overflow-hidden">
+                <CardContent className="p-0">
+                  <div className="grid md:grid-cols-2 gap-0">
+                    <div className="relative bg-gradient-to-br from-primary/10 to-accent/10 min-h-[400px]">
+                      <img
+                        src={selectedSpeaker.image}
+                        alt={selectedSpeaker.name}
+                        className="absolute inset-0 w-full h-full object-contain p-4"
+                      />
+                    </div>
+
+                    <div className="p-8 md:p-10 flex flex-col justify-center">
+                      <h3 className="text-2xl md:text-3xl font-display font-bold text-gradient-gold mb-2">
+                        {selectedSpeaker.eventTitle}
+                      </h3>
+                      <p className="text-xl text-white/90 font-semibold mb-6">
+                        {selectedSpeaker.name}
+                      </p>
+
+                      <p className="text-muted-foreground leading-relaxed mb-8">
+                        {selectedSpeaker.description}
+                      </p>
+
+                      <div className="space-y-4 mb-8">
+                        <div className="flex items-center gap-3 text-sm text-foreground/80">
+                          <span className="w-24 text-primary font-semibold">Date:</span>
+                          <span>{selectedSpeaker.date}</span>
+                        </div>
+                        <div className="flex items-center gap-3 text-sm text-foreground/80">
+                          <span className="w-24 text-primary font-semibold">Time:</span>
+                          <span>{selectedSpeaker.time}</span>
+                        </div>
+                        <div className="flex items-center gap-3 text-sm text-foreground/80">
+                          <span className="w-24 text-primary font-semibold">Venue:</span>
+                          <span>{selectedSpeaker.venue}</span>
+                        </div>
+                        <div className="flex items-center gap-3 text-sm text-foreground/80">
+                          <span className="w-24 text-primary font-semibold">Organized by:</span>
+                          <span>{selectedSpeaker.organizer}</span>
+                        </div>
+                      </div>
+
+                      <div className="border-t border-white/10 pt-6">
+                        <h4 className="text-lg font-semibold mb-4 text-accent">Event Gallery</h4>
+                        <div className="grid grid-cols-3 gap-2">
+                          {[1, 2, 3].map((i) => (
+                            <div key={i} className="aspect-video bg-white/5 rounded-md animate-pulse"></div>
+                          ))}
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <h4 className="font-semibold text-lg text-foreground transition-colors duration-300 group-hover:text-primary-foreground">{speaker.name}</h4>
-                  <p className="text-primary text-sm font-medium transition-colors duration-300 group-hover:text-accent-foreground">{speaker.company}</p>
-                  <p className="text-muted-foreground text-sm mt-2 transition-colors duration-300 group-hover:text-white/90">{speaker.description}</p>
+                </CardContent>
+              </Card>
+            </div>
+          );
+        }
+
+        return (
+          <div className="max-w-md mx-auto">
+            {speakers.map((speaker, index) => (
+              <Card key={index} className="card-hover glass-dark border-0 shadow-md text-center group overflow-hidden">
+                <div className="relative h-64 bg-gradient-to-b from-primary/20 to-transparent">
+                  <img
+                    src={speaker.image}
+                    alt={speaker.name}
+                    className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
+                </div>
+
+                <CardContent className="p-6 relative -mt-12">
+                  <h4 className="font-semibold text-xl text-foreground mb-1">{speaker.name}</h4>
+                  <p className="text-accent text-sm font-medium mb-2">{speaker.eventTitle}</p>
+                  <p className="text-muted-foreground text-xs mb-6">{speaker.company}</p>
+
+                  <div className="grid grid-cols-2 gap-4 text-xs text-left mb-6 bg-white/5 p-4 rounded-lg">
+                    <div>
+                      <p className="text-primary font-semibold">Date</p>
+                      <p className="text-foreground/80">Feb 2025</p>
+                    </div>
+                    <div className="text-right">
+                      <button
+                        onClick={() => setSelectedSpeaker(speaker)}
+                        className="text-accent hover:text-white transition-colors underline font-medium text-sm"
+                      >
+                        View Details →
+                      </button>
+                    </div>
+                  </div>
                 </CardContent>
               </Card>
             ))}
           </div>
         );
+
 
       case 'about':
         return (
@@ -211,6 +371,38 @@ export const EventSchedule = () => {
 
       {/* Bottom Transition Gradient */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent z-20 pointer-events-none" />
+
+      {/* Image Gallery Popup Modal */}
+      {selectedGalleryImage && (
+        <div
+          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/80 backdrop-blur-md animate-fade-in"
+          onClick={() => setSelectedGalleryImage(null)}
+        >
+          <div
+            className="relative max-w-5xl w-full max-h-[90vh] bg-white/10 rounded-2xl overflow-hidden shadow-2xl border border-white/20 animate-scale-up"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Close Button */}
+            <button
+              className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/50 hover:bg-black/80 text-white rounded-full flex items-center justify-center transition-colors"
+              onClick={() => setSelectedGalleryImage(null)}
+            >
+              ✕
+            </button>
+
+            <img
+              src={selectedGalleryImage.image}
+              alt={selectedGalleryImage.title}
+              className="w-full h-full object-contain"
+            />
+
+            <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent">
+              <h3 className="text-xl font-display font-bold text-white mb-1">{selectedGalleryImage.title}</h3>
+              <p className="text-white/70 text-sm">{selectedGalleryImage.description}</p>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

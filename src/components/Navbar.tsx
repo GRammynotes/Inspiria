@@ -28,62 +28,21 @@ export const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled
-          ? 'glass-dark py-3 shadow-lg shadow-black/20'
-          : 'bg-transparent py-5'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled
+        ? 'glass-dark py-3 shadow-lg shadow-black/20'
+        : 'bg-transparent py-5'
+        }`}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Premium Logo */}
         <a href="#home" className="group flex items-center gap-2">
           {/* Logo emblem - hexagon style */}
-          <div 
-            className="relative w-10 h-10 flex items-center justify-center transition-transform duration-300 group-hover:scale-110"
-            style={{
-              background: 'linear-gradient(135deg, hsl(270 70% 50%) 0%, hsl(45 90% 55%) 100%)',
-              clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
-            }}
-          >
-            <div 
-              className="absolute inset-[2px] flex items-center justify-center"
-              style={{
-                background: 'hsl(220 60% 8%)',
-                clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)',
-              }}
-            >
-              <span 
-                className="font-display font-bold text-lg"
-                style={{
-                  background: 'linear-gradient(135deg, #ffffff, #ffcc00)',
-                  WebkitBackgroundClip: 'text',
-                  backgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                }}
-              >
-                I
-              </span>
-            </div>
-          </div>
-          {/* Logo text */}
-          <div className="flex flex-col -space-y-1">
-            <span 
-              className="font-display text-xl font-bold tracking-[0.2em] uppercase transition-all duration-300"
-              style={{
-                background: 'linear-gradient(90deg, #ffffff 0%, #ffcc00 100%)',
-                WebkitBackgroundClip: 'text',
-                backgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-              }}
-            >
-              INSPIRIA
-            </span>
-            <span 
-              className="text-[8px] tracking-[0.3em] uppercase opacity-60"
-              style={{ color: 'hsl(45, 90%, 55%)' }}
-            >
-              5.0
-            </span>
+          <div className="bg-white/60 py-0 px-16 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.6)] hover:shadow-[0_0_20px_rgba(255,255,255,0.8)] transition-all duration-300 overflow-hidden">
+            <img
+              src="/images/inspiria-logo.png"
+              alt="Inspiria Logo"
+              className="h-16 w-auto object-contain transform scale-[3]"
+            />
           </div>
         </a>
 
@@ -93,11 +52,10 @@ export const Navbar = () => {
             <a
               key={link.href}
               href={link.href}
-              className={`nav-link text-sm font-medium transition-all duration-300 relative px-3 py-2 rounded-lg ${
-                activeSection === link.href.slice(1)
-                  ? 'text-gold bg-white/5'
-                  : 'text-white/70 hover:text-white hover:bg-white/5'
-              }`}
+              className={`nav-link text-sm font-medium transition-all duration-300 relative px-3 py-2 rounded-lg ${activeSection === link.href.slice(1)
+                ? 'text-gold bg-white/5'
+                : 'text-white/70 hover:text-white hover:bg-white/5'
+                }`}
             >
               {link.label}
               <span className="nav-link-underline" />
@@ -131,12 +89,12 @@ export const Navbar = () => {
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
         <div className="lg:hidden glass-dark mt-2 mx-4 rounded-xl p-4 animate-fade-in-up">
-          <div className="flex flex-col gap-4">
+          <div className="flex flex-col gap-4 items-center text-center">
             {navLinks.map((link) => (
               <a
                 key={link.href}
                 href={link.href}
-                className="text-white/80 hover:text-gold transition-colors py-2"
+                className="text-white/80 hover:text-gold transition-colors py-2 w-full"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.label}
@@ -150,7 +108,7 @@ export const Navbar = () => {
               duration={500}
             >
               <Button
-                className="bg-primary hover:bg-primary/90 text-white font-semibold w-full rounded-full mt-2"
+                className="bg-primary hover:bg-primary/90 text-white font-semibold w-full md:w-auto px-8 rounded-full mt-2"
               >
                 REGISTER
               </Button>

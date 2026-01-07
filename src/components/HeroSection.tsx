@@ -127,7 +127,7 @@ export const HeroSection = () => {
       >
         {/* Small tagline - flat, gold, not 3D */}
         <p
-          className={`text-xs md:text-sm tracking-[0.5em] uppercase mb-8 font-medium ${mounted ? 'animate-fade-in-up' : 'opacity-0'
+          className={`text-xs md:text-sm tracking-[0.5em] uppercase mb-2 font-medium ${mounted ? 'animate-fade-in-up' : 'opacity-0'
             }`}
           style={{ color: 'hsl(45, 90%, 55%)' }}
         >
@@ -147,19 +147,30 @@ export const HeroSection = () => {
             style={{
               color: 'white',
               textShadow: `
-                0 0 40px rgba(255,255,255,0.3),
-                0 2px 0 rgba(255,255,255,0.1),
-                0 4px 0 rgba(200,200,200,0.1),
-                0 6px 0 rgba(150,150,150,0.1),
-                0 8px 0 rgba(100,100,100,0.1),
+                0 0 20px rgba(255,255,255,0.4),
+                0 2px 0 rgba(255,255,255,0.9),
+                0 4px 0 rgba(220,220,220,0.9),
+                0 6px 0 rgba(200,200,200,0.9),
+                0 8px 0 rgba(180,180,180,0.9),
                 0 10px 20px rgba(0,0,0,0.5),
                 0 20px 40px rgba(0,0,0,0.3)
               `,
               transform: 'translateZ(20px)',
             }}
           >
-            <SparklesText colors={['#FFC700', '#FFD700', '#ffffff']}>
-              <ShinyText text="INSPIRIA" disabled={false} speed={3} className="" />
+            <SparklesText
+              colors={['#99CCFF', '#ADD8E6', '#E0FFFF']}
+              style={{
+                background: 'linear-gradient(135deg, #C0C0C0 0%, #FFFFFF 30%, #C0C0C0 50%, #E0E0E0 70%, #C0C0C0 100%)',
+                backgroundSize: '200% 200%',
+                WebkitBackgroundClip: 'text',
+                backgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                animation: 'gold-shimmer 3s ease-in-out infinite',
+                display: 'inline-block'
+              }}
+            >
+              INSPIRIA
             </SparklesText>
           </h1>
 
@@ -213,18 +224,13 @@ export const HeroSection = () => {
               size="lg"
               className="bg-white text-[hsl(220,60%,8%)] hover:bg-white/95 font-bold px-12 py-7 text-base rounded-full transition-all hover:scale-105 uppercase tracking-wider shadow-[0_10px_40px_rgba(255,255,255,0.2)]"
             >
-              Get Tickets
+              Register
             </Button>
           </ClickSpark>
         </div>
       </div>
 
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 animate-bounce">
-        <div className="w-6 h-10 border-2 border-white/20 rounded-full flex justify-center pt-2">
-          <div className="w-1 h-3 bg-white/40 rounded-full animate-pulse" />
-        </div>
-      </div>
+
 
       {/* Smooth transition gradient */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
