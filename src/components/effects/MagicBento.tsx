@@ -523,7 +523,7 @@ export const MagicBento = ({
                                 <div className="magic-bento-card__content absolute bottom-4 left-4 right-4">
                                     <h2 className="magic-bento-card__title text-lg font-semibold">{card.title}</h2>
                                 </div>
-                                {card.image && <img src={card.image} alt={card.title} className="absolute inset-0 w-full h-full object-cover -z-10 opacity-100" />}
+                                {card.image && <img src={card.image} alt={card.title} className="absolute inset-0 w-full h-full object-cover z-0 opacity-100" />}
                             </ParticleCard>
                         );
                     }
@@ -647,7 +647,7 @@ export const MagicBento = ({
                                 <h2 className="magic-bento-card__title">{card.title}</h2>
                                 <p className="magic-bento-card__description">{card.description}</p>
                             </div>
-                            {card.image && <img src={card.image} alt={card.title} className="absolute inset-0 w-full h-full object-cover -z-10 opacity-100" />}
+                            {card.image && <img src={card.image} alt={card.title} className="absolute inset-0 w-full h-full object-cover z-0 opacity-100" />}
                         </div>
                     );
                 })}

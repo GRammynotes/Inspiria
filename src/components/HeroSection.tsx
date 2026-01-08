@@ -135,29 +135,19 @@ export const HeroSection = () => {
         </p>
 
         {/* 3D Floating Title Container - Single Line */}
-        <div
-          className={`hero-title-3d flex items-baseline justify-center gap-2 md:gap-4 ${mounted ? 'animate-fade-in-up animation-delay-100' : 'opacity-0'}`}
+        <h1
+          className={`hero-title-3d flex items-baseline justify-center gap-2 md:gap-4 font-display text-[clamp(2.5rem,10vw,8rem)] font-bold whitespace-nowrap ${mounted ? 'animate-fade-in-up animation-delay-100' : 'opacity-0'}`}
           style={{
             animation: mounted ? 'hero-float 6s ease-in-out infinite' : 'none',
+            color: 'white',
+            textShadow: `
+                0 0 20px rgba(255,255,255,0.2),
+                0 10px 20px rgba(0,0,0,0.5)
+              `,
           }}
         >
-          {/* INSPIRIA - Dynamic sizing */}
-          <h1
-            className="font-display text-[clamp(2.5rem,10vw,8rem)] font-bold hero-text-3d whitespace-nowrap"
-            style={{
-              color: 'white',
-              textShadow: `
-                0 0 20px rgba(255,255,255,0.4),
-                0 2px 0 rgba(255,255,255,0.9),
-                0 4px 0 rgba(220,220,220,0.9),
-                0 6px 0 rgba(200,200,200,0.9),
-                0 8px 0 rgba(180,180,180,0.9),
-                0 10px 20px rgba(0,0,0,0.5),
-                0 20px 40px rgba(0,0,0,0.3)
-              `,
-              transform: 'translateZ(20px)',
-            }}
-          >
+          {/* INSPIRIA -银色 */}
+          <span className="hero-text-3d" style={{ transform: 'translateZ(40px)' }}>
             <SparklesText
               colors={['#99CCFF', '#ADD8E6', '#E0FFFF']}
               style={{
@@ -172,10 +162,10 @@ export const HeroSection = () => {
             >
               INSPIRIA
             </SparklesText>
-          </h1>
+          </span>
 
-          {/* 5.0 - Gold, dynamic sizing */}
-          <span className="font-display text-[clamp(2.5rem,10vw,8rem)] font-bold hero-text-5 whitespace-nowrap">
+          {/* 5.0 - 金色 */}
+          <span className="hero-text-5" style={{ transform: 'translateZ(40px)' }}>
             <SparklesText
               colors={['#FFC700', '#FFD700', '#FFA500']}
               style={{
@@ -184,16 +174,15 @@ export const HeroSection = () => {
                 WebkitBackgroundClip: 'text',
                 backgroundClip: 'text',
                 WebkitTextFillColor: 'transparent',
-                filter: 'drop-shadow(0 0 30px rgba(255,204,0,0.6)) drop-shadow(0 0 60px rgba(255,204,0,0.3))',
+                filter: 'drop-shadow(0 0 30px rgba(255,204,0,0.4))',
                 animation: 'gold-shimmer 3s ease-in-out infinite',
-                transform: 'translateZ(60px) scale(1.05)',
                 display: 'inline-block'
               }}
             >
               5.0
             </SparklesText>
           </span>
-        </div>
+        </h1>
 
         {/* Subtitle - calm, elegant, not animated */}
         <p

@@ -235,7 +235,7 @@ export const EventSchedule = () => {
         </div>
 
         {/* Tab Content */}
-        <div className="max-w-5xl mx-auto animate-fade-in-up">
+        <div className="max-w-7xl mx-auto animate-fade-in-up">
           {renderTabContent()}
         </div>
       </div>

@@ -1,3 +1,4 @@
+import { useEffect, useState } from 'react';
 import { Quote } from 'lucide-react';
 import { BlurText, PixelCard } from '@/components/effects';
 
@@ -55,7 +56,20 @@ const TestimonialCard = ({ quote, name, branch }: { quote: string; name: string;
 );
 
 export const Testimonials = () => {
+  const [isPaused, setIsPaused] = useState(false);
   const duplicatedTestimonials = [...testimonials, ...testimonials];
+
+  useEffect(() => {
+    const handleScroll = () => {
+      // Resume animation when scrolling on mobile
+      if (isPaused) {
+        setIsPaused(false);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [isPaused]);
 
   return (
     <section className="relative pt-10 pb-20 md:pt-12 md:pb-28 overflow-hidden">
@@ -75,11 +89,14 @@ export const Testimonials = () => {
       {/* Marquee Container */}
       <div className="relative z-10">
         {/* Gradient overlays */}
-        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-background/80 to-transparent z-10 pointer-events-none" />
-        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-background/80 to-transparent z-10 pointer-events-none" />
+        <div className="absolute left-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-r from-background/80 to-transparent z-20 pointer-events-none" />
+        <div className="absolute right-0 top-0 bottom-0 w-20 md:w-40 bg-gradient-to-l from-background/80 to-transparent z-20 pointer-events-none" />
 
         {/* Scrolling content */}
-        <div className="flex animate-marquee">
+        <div
+          className={`flex animate-marquee md:hover:[animation-play-state:paused] ${isPaused ? '[animation-play-state:paused]' : ''}`}
+          onClick={() => setIsPaused(true)}
+        >
           {duplicatedTestimonials.map((testimonial, index) => (
             <TestimonialCard key={index} {...testimonial} />
           ))}
