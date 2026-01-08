@@ -43,7 +43,6 @@ interface AnimatedListProps {
 const AnimatedList = ({
     items = [],
     onItemSelect,
-    showGradients = true,
     enableArrowNavigation = true,
     className = '',
     itemClassName = '',
@@ -53,8 +52,6 @@ const AnimatedList = ({
     const listRef = useRef<HTMLDivElement>(null);
     const [selectedIndex, setSelectedIndex] = useState(initialSelectedIndex);
     const [keyboardNav, setKeyboardNav] = useState(false);
-    const [topGradientOpacity, setTopGradientOpacity] = useState(0);
-    const [bottomGradientOpacity, setBottomGradientOpacity] = useState(1);
 
     const handleItemMouseEnter = useCallback((index: number) => {
         setSelectedIndex(index);
@@ -69,13 +66,6 @@ const AnimatedList = ({
         },
         [onItemSelect]
     );
-
-    const handleScroll = useCallback((e: React.UIEvent<HTMLDivElement>) => {
-        const { scrollTop, scrollHeight, clientHeight } = e.currentTarget;
-        setTopGradientOpacity(Math.min(scrollTop / 50, 1));
-        const bottomDistance = scrollHeight - (scrollTop + clientHeight);
-        setBottomGradientOpacity(scrollHeight <= clientHeight ? 0 : Math.min(bottomDistance / 50, 1));
-    }, []);
 
     useEffect(() => {
         if (!enableArrowNavigation) return;
@@ -126,7 +116,7 @@ const AnimatedList = ({
 
     return (
         <div className={`scroll-list-container ${className}`}>
-            <div ref={listRef} className={`scroll-list ${!displayScrollbar ? 'no-scrollbar' : ''}`} onScroll={handleScroll}>
+            <div ref={listRef} className={`scroll-list ${!displayScrollbar ? 'no-scrollbar' : ''}`}>
                 {items.map((item, index) => (
                     <AnimatedItem
                         key={index}
@@ -141,12 +131,6 @@ const AnimatedList = ({
                     </AnimatedItem>
                 ))}
             </div>
-            {showGradients && (
-                <>
-                    <div className="top-gradient" style={{ opacity: topGradientOpacity }}></div>
-                    <div className="bottom-gradient" style={{ opacity: bottomGradientOpacity }}></div>
-                </>
-            )}
         </div>
     );
 };

@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { useEffect, useState, useRef } from 'react';
-import { ClickSpark, HyperspeedBackground, LightRays, Hyperspeed, SparklesText, ShinyText } from '@/components/effects';
+import { HyperspeedBackground, LightRays, Hyperspeed, SparklesText, ShinyText } from '@/components/effects';
 import { CountdownTimer } from '@/components/CountdownTimer';
 
 // Event date - February 15, 2025
@@ -213,20 +213,12 @@ export const HeroSection = () => {
           className={`${mounted ? 'animate-fade-in-up animation-delay-300' : 'opacity-0'
             }`}
         >
-          <ClickSpark
-            sparkColor="#ffcc00"
-            sparkSize={12}
-            sparkRadius={50}
-            sparkCount={10}
-            duration={600}
+          <Button
+            size="lg"
+            className="bg-white text-[hsl(220,60%,8%)] hover:bg-white/95 font-bold px-12 py-7 text-base rounded-full transition-all hover:scale-105 uppercase tracking-wider shadow-[0_10px_40px_rgba(255,255,255,0.2)]"
           >
-            <Button
-              size="lg"
-              className="bg-white text-[hsl(220,60%,8%)] hover:bg-white/95 font-bold px-12 py-7 text-base rounded-full transition-all hover:scale-105 uppercase tracking-wider shadow-[0_10px_40px_rgba(255,255,255,0.2)]"
-            >
-              Register
-            </Button>
-          </ClickSpark>
+            Register
+          </Button>
         </div>
       </div>
 

@@ -58,24 +58,12 @@ export const Testimonials = () => {
   const duplicatedTestimonials = [...testimonials, ...testimonials];
 
   return (
-    <section className="relative py-20 md:py-28 overflow-hidden">
+    <section className="relative pt-10 pb-20 md:pt-12 md:pb-28 overflow-hidden">
       <div className="container relative z-10 mx-auto px-4 mb-12">
         {/* Section Title */}
         <div className="text-center">
           <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-2">
-            <span
-              className="relative inline-block"
-              style={{
-                background: 'linear-gradient(90deg, #FFD700, #FFA500, #FFED4E, #FFD700, #FFA500)',
-                backgroundSize: '200% 100%',
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                backgroundClip: 'text',
-                animation: 'gold-shimmer 3s linear infinite'
-              }}
-            >
-              <BlurText delay={100}>Testimonials</BlurText>
-            </span>
+            <span className="gold-shimmer-text">Testimonials</span>
           </h2>
           <div className="w-16 h-1 bg-accent mx-auto rounded-full mb-4" />
           <h3 className="text-xl md:text-2xl font-semibold text-foreground">

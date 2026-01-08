@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
-import { ClickSpark } from '@/components/effects';
 
 const navLinks = [
   { href: '#home', label: 'Home' },
@@ -37,7 +36,7 @@ export const Navbar = () => {
         {/* Premium Logo */}
         <a href="#home" className="group flex items-center gap-2">
           {/* Logo emblem - hexagon style */}
-          <div className="bg-white/60 py-0 px-16 rounded-lg shadow-[0_0_15px_rgba(255,255,255,0.6)] hover:shadow-[0_0_20px_rgba(255,255,255,0.8)] transition-all duration-300 overflow-hidden">
+          <div className="bg-white/95 py-0 px-16 rounded-lg shadow-[0_0_20px_rgba(255,255,255,0.8)] hover:shadow-[0_0_30px_rgba(255,255,255,1)] transition-all duration-300 overflow-hidden">
             <img
               src="/images/inspiria-logo.png"
               alt="Inspiria Logo"
@@ -61,20 +60,12 @@ export const Navbar = () => {
               <span className="nav-link-underline" />
             </a>
           ))}
-          <ClickSpark
-            sparkColor="#ffcc00"
-            sparkSize={10}
-            sparkRadius={35}
-            sparkCount={8}
-            duration={500}
+          <Button
+            className="relative overflow-hidden bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-white font-bold px-6 py-2 rounded-full border border-white/10 shadow-lg shadow-primary/30 transition-all duration-300 hover:scale-105 hover:shadow-primary/50"
           >
-            <Button
-              className="relative overflow-hidden bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-white font-bold px-6 py-2 rounded-full border border-white/10 shadow-lg shadow-primary/30 transition-all duration-300 hover:scale-105 hover:shadow-primary/50"
-            >
-              <span className="relative z-10">REGISTER</span>
-              <div className="absolute inset-0 bg-gradient-to-r from-gold/20 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
-            </Button>
-          </ClickSpark>
+            <span className="relative z-10">REGISTER</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-gold/20 to-transparent opacity-0 hover:opacity-100 transition-opacity" />
+          </Button>
         </div>
 
         {/* Mobile Menu Button */}
@@ -100,19 +91,11 @@ export const Navbar = () => {
                 {link.label}
               </a>
             ))}
-            <ClickSpark
-              sparkColor="#ffcc00"
-              sparkSize={10}
-              sparkRadius={35}
-              sparkCount={8}
-              duration={500}
+            <Button
+              className="bg-primary hover:bg-primary/90 text-white font-semibold w-full md:w-auto px-8 rounded-full mt-2"
             >
-              <Button
-                className="bg-primary hover:bg-primary/90 text-white font-semibold w-full md:w-auto px-8 rounded-full mt-2"
-              >
-                REGISTER
-              </Button>
-            </ClickSpark>
+              REGISTER
+            </Button>
           </div>
         </div>
       )}

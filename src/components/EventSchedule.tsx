@@ -4,10 +4,9 @@ import { Clock, Image as ImageIcon, User, Info } from 'lucide-react';
 import { BlurText, GridScan, TrueFocus, MagicBento, AnimatedList } from '@/components/effects';
 
 const tabs = [
-  { id: 'inspiria', label: 'INSPIRIA 4.0' },
+  { id: 'inspiria', label: 'INSPIRIA 5.0' },
   { id: 'day1', label: 'EVENT TIMELINE' },
   { id: 'gallery', label: 'IMAGE GALLERY' },
-  { id: 'speaker', label: 'PREVIOUS SPEAKER' },
   { id: 'about', label: 'ABOUT TPC-PCE' },
 ];
 
@@ -64,7 +63,7 @@ export const EventSchedule = () => {
                 {/* Content */}
                 <div className="p-8 md:p-10 flex flex-col justify-center">
                   <h3 className="text-2xl md:text-3xl font-display font-bold text-gradient-gold mb-4">
-                    Welcome to Inspiria 4.0
+                    Welcome to Inspiria 5.0
                   </h3>
                   <p className="text-muted-foreground leading-relaxed">
                     Inspiria is a testament to revolution and progress. It's a rendezvous of innovation and inspiration,
@@ -149,145 +148,17 @@ export const EventSchedule = () => {
         ];
 
         return (
-          <div className="w-full relative py-4 group/carousel overflow-hidden">
-            {/* Left fade gradient */}
-            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none hidden md:block" />
-            {/* Right fade gradient */}
-            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none hidden md:block" />
-
-            <div className="flex animate-marquee-slow hover:[animation-play-state:paused] gap-8">
-              <div className="flex shrink-0">
-                <MagicBento
-                  cardData={bentoCards}
-                  spotlightRadius={610}
-                  enableTilt={true}
-                  enableMagnetism={true}
-                  glowColor="255, 215, 0"
-                  onCardClick={(card) => setSelectedGalleryImage(card)}
-                />
-              </div>
-              <div className="flex shrink-0">
-                <MagicBento
-                  cardData={bentoCards}
-                  spotlightRadius={610}
-                  enableTilt={true}
-                  enableMagnetism={true}
-                  glowColor="255, 215, 0"
-                  onCardClick={(card) => setSelectedGalleryImage(card)}
-                />
-              </div>
-            </div>
-          </div>
+          <MagicBento
+            cardData={bentoCards}
+            spotlightRadius={610}
+            enableTilt={true}
+            enableMagnetism={true}
+            glowColor="255, 215, 0"
+            onCardClick={(card) => setSelectedGalleryImage(card)}
+          />
         );
 
-      case 'speaker':
 
-
-        if (selectedSpeaker) {
-          return (
-            <div className="animate-fade-in-up">
-              <button
-                onClick={() => setSelectedSpeaker(null)}
-                className="mb-6 flex items-center gap-2 text-primary hover:text-accent transition-colors"
-              >
-                ← Back to Speakers
-              </button>
-
-              <Card className="glass-dark border-0 shadow-lg overflow-hidden">
-                <CardContent className="p-0">
-                  <div className="grid md:grid-cols-2 gap-0">
-                    <div className="relative bg-gradient-to-br from-primary/10 to-accent/10 min-h-[400px]">
-                      <img
-                        src={selectedSpeaker.image}
-                        alt={selectedSpeaker.name}
-                        className="absolute inset-0 w-full h-full object-contain p-4"
-                      />
-                    </div>
-
-                    <div className="p-8 md:p-10 flex flex-col justify-center">
-                      <h3 className="text-2xl md:text-3xl font-display font-bold text-gradient-gold mb-2">
-                        {selectedSpeaker.eventTitle}
-                      </h3>
-                      <p className="text-xl text-white/90 font-semibold mb-6">
-                        {selectedSpeaker.name}
-                      </p>
-
-                      <p className="text-muted-foreground leading-relaxed mb-8">
-                        {selectedSpeaker.description}
-                      </p>
-
-                      <div className="space-y-4 mb-8">
-                        <div className="flex items-center gap-3 text-sm text-foreground/80">
-                          <span className="w-24 text-primary font-semibold">Date:</span>
-                          <span>{selectedSpeaker.date}</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-sm text-foreground/80">
-                          <span className="w-24 text-primary font-semibold">Time:</span>
-                          <span>{selectedSpeaker.time}</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-sm text-foreground/80">
-                          <span className="w-24 text-primary font-semibold">Venue:</span>
-                          <span>{selectedSpeaker.venue}</span>
-                        </div>
-                        <div className="flex items-center gap-3 text-sm text-foreground/80">
-                          <span className="w-24 text-primary font-semibold">Organized by:</span>
-                          <span>{selectedSpeaker.organizer}</span>
-                        </div>
-                      </div>
-
-                      <div className="border-t border-white/10 pt-6">
-                        <h4 className="text-lg font-semibold mb-4 text-accent">Event Gallery</h4>
-                        <div className="grid grid-cols-3 gap-2">
-                          {[1, 2, 3].map((i) => (
-                            <div key={i} className="aspect-video bg-white/5 rounded-md animate-pulse"></div>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            </div>
-          );
-        }
-
-        return (
-          <div className="max-w-md mx-auto">
-            {speakers.map((speaker, index) => (
-              <Card key={index} className="card-hover glass-dark border-0 shadow-md text-center group overflow-hidden">
-                <div className="relative h-64 bg-gradient-to-b from-primary/20 to-transparent">
-                  <img
-                    src={speaker.image}
-                    alt={speaker.name}
-                    className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background to-transparent opacity-60"></div>
-                </div>
-
-                <CardContent className="p-6 relative -mt-12">
-                  <h4 className="font-semibold text-xl text-foreground mb-1">{speaker.name}</h4>
-                  <p className="text-accent text-sm font-medium mb-2">{speaker.eventTitle}</p>
-                  <p className="text-muted-foreground text-xs mb-6">{speaker.company}</p>
-
-                  <div className="grid grid-cols-2 gap-4 text-xs text-left mb-6 bg-white/5 p-4 rounded-lg">
-                    <div>
-                      <p className="text-primary font-semibold">Date</p>
-                      <p className="text-foreground/80">Feb 2025</p>
-                    </div>
-                    <div className="text-right">
-                      <button
-                        onClick={() => setSelectedSpeaker(speaker)}
-                        className="text-accent hover:text-white transition-colors underline font-medium text-sm"
-                      >
-                        View Details →
-                      </button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-            ))}
-          </div>
-        );
 
 
       case 'about':
@@ -320,7 +191,7 @@ export const EventSchedule = () => {
   };
 
   return (
-    <section id="schedule" className="relative py-20 md:py-28 bg-background overflow-hidden">
+    <section id="schedule" className="relative pt-20 pb-10 md:pt-28 md:pb-16 bg-background overflow-hidden">
       {/* Top Transition Gradient */}
       <div className="absolute top-0 left-0 w-full h-32 bg-gradient-to-b from-background to-transparent z-20 pointer-events-none" />
 
@@ -343,8 +214,8 @@ export const EventSchedule = () => {
       <div className="container relative z-10 mx-auto px-4">
         {/* Section Title */}
         <div className="text-center mb-12">
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-foreground mb-2">
-            <BlurText delay={100}>Event Schedule</BlurText>
+          <h2 className="font-display text-4xl md:text-5xl lg:text-6xl font-bold mb-2">
+            <span className="gold-shimmer-text">Event Schedule</span>
           </h2>
           <div className="w-16 h-1 bg-accent mx-auto rounded-full" />
         </div>
@@ -354,7 +225,7 @@ export const EventSchedule = () => {
           <TrueFocus
             items={tabs.map(tab => tab.label)}
             manualMode={true}
-            blurAmount={2}
+            blurAmount={0.5}
             borderColor="#FFD700"
             glowColor="rgba(255, 215, 0, 0.6)"
             animationDuration={0.6}

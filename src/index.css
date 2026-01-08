@@ -484,16 +484,22 @@
 
 @keyframes gold-shimmer {
   0% {
-    background-position: 0% 50%;
-  }
-
-  50% {
-    background-position: 100% 50%;
+    background-position: -200% 0;
   }
 
   100% {
-    background-position: 0% 50%;
+    background-position: 200% 0;
   }
+}
+
+.gold-shimmer-text {
+  background: linear-gradient(90deg, #FFD700, #FFA500, #FFED4E, #FFD700, #FFA500);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  animation: gold-shimmer 3s linear infinite;
+  display: inline-block;
 }
 
 .hero-title-3d {
@@ -637,8 +643,12 @@
   }
 }
 
+.animate-marquee {
+  animation: marquee 30s linear infinite;
+}
+
 .animate-marquee-slow {
-  animation: marquee-slow 40s linear infinite;
+  animation: marquee-slow 50s linear infinite;
 }
 
 .pause {
