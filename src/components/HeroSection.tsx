@@ -1,10 +1,10 @@
 import { Button } from '@/components/ui/button';
 import { useEffect, useState, useRef } from 'react';
-import { HyperspeedBackground, LightRays, Hyperspeed, SparklesText, ShinyText } from '@/components/effects';
+import { LightRays, Hyperspeed, SparklesText, ShinyText } from '@/components/effects';
 import { CountdownTimer } from '@/components/CountdownTimer';
 
-// Event date - February 15, 2025
-const EVENT_DATE = new Date('2025-02-15T09:00:00');
+// Event date - January 13, 2026 at 1:00 PM
+const EVENT_DATE = new Date('2026-01-13T13:00:00');
 
 const hyperspeedOptions = {
   onSpeedUp: () => { },
@@ -35,7 +35,7 @@ const hyperspeedOptions = {
   colors: {
     roadColor: 0x080808,
     islandColor: 0x0a0a0a,
-    background: 0x000000,
+    background: 0x222F66,
     shoulderLines: 0xFFFFFF,
     brokenLines: 0xFFFFFF,
     leftCars: [0xD856BF, 0x6750A2, 0xC247AC],
@@ -47,10 +47,22 @@ const hyperspeedOptions = {
 export const HeroSection = () => {
   const [mounted, setMounted] = useState(false);
   const [mousePos, setMousePos] = useState({ x: 0, y: 0 });
+  const [isExpired, setIsExpired] = useState(false);
   const heroRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     setMounted(true);
+
+    // Check if event has already passed
+    const checkExpiry = () => {
+      if (new Date().getTime() >= EVENT_DATE.getTime()) {
+        setIsExpired(true);
+      }
+    };
+
+    checkExpiry();
+    const expiryInterval = setInterval(checkExpiry, 1000);
+    return () => clearInterval(expiryInterval);
   }, []);
 
   // Parallax mouse tracking
@@ -71,8 +83,9 @@ export const HeroSection = () => {
   return (
     <section
       ref={heroRef}
-      id="home"
+      id="inspiria"
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
+      style={{ backgroundColor: '#222F66' }}
     >
       {/* Sharp Hyperspeed + GridScan Background - NO BLUR */}
       {/* Sharp Hyperspeed + GridScan Background - NO BLUR */}
@@ -81,7 +94,7 @@ export const HeroSection = () => {
       <div style={{ width: '100%', height: '600px', position: 'absolute', top: 0, left: 0, zIndex: 10, display: 'flex', justifyContent: 'center' }}>
         <LightRays
           raysOrigin="top-center"
-          raysColor="#ffffff"
+          raysColor="#222F66"
           raysSpeed={1.5}
           lightSpread={0.8}
           rayLength={1.2}
@@ -192,10 +205,12 @@ export const HeroSection = () => {
           Innovate. Integrate. Inspire.
         </p>
 
-        {/* Countdown Timer */}
-        <div className="mb-10">
-          <CountdownTimer targetDate={EVENT_DATE} />
-        </div>
+        {/* Countdown Timer - Hides after January 13th 1PM */}
+        {!isExpired && (
+          <div className="mb-10">
+            <CountdownTimer targetDate={EVENT_DATE} />
+          </div>
+        )}
 
         {/* Button - solid, bold, premium, no glass */}
         <div
@@ -213,8 +228,13 @@ export const HeroSection = () => {
 
 
 
-      {/* Smooth transition gradient */}
-      <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent z-10 pointer-events-none" />
+      {/* Seamless transition gradient - extended and softened */}
+      <div
+        className="absolute bottom-[-1px] left-0 w-full h-[30vh] z-10 pointer-events-none"
+        style={{
+          background: 'linear-gradient(to top, hsl(var(--background)) 0%, hsla(var(--background), 0.8) 20%, hsla(var(--background), 0) 100%)'
+        }}
+      />
     </section>
   );
 };

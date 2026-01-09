@@ -234,8 +234,8 @@ export default function Galaxy({
         let program: Program;
 
         function resize() {
-            const scale = 1;
-            renderer.setSize(ctn.offsetWidth * scale, ctn.offsetHeight * scale);
+            const dpr = window.devicePixelRatio || 1;
+            renderer.setSize(ctn.offsetWidth * dpr, ctn.offsetHeight * dpr);
             if (program) {
                 program.uniforms.uResolution.value = new Color(
                     gl.canvas.width,

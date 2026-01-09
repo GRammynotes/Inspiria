@@ -1,115 +1,111 @@
-import { Phone, Mail, Instagram, Linkedin, Facebook } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { NavLink } from "react-router-dom";
+import {
+  faFacebook,
+  faInstagram,
+  faLinkedin,
+} from "@fortawesome/free-brands-svg-icons";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import "./Footer.css";
+
+// Use the logo from public folder
+const Logo = "/images/tpc-pce.png";
+
+function topFunction() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
 
 export const Footer = () => {
+  const [showScroll, setShowScroll] = useState(false);
+
+  useEffect(() => {
+    const checkScrollTop = () => {
+      if (!showScroll && window.pageYOffset > 400) {
+        setShowScroll(true);
+      } else if (showScroll && window.pageYOffset <= 400) {
+        setShowScroll(false);
+      }
+    };
+
+    window.addEventListener("scroll", checkScrollTop);
+    return () => window.removeEventListener("scroll", checkScrollTop);
+  }, [showScroll]);
+
   return (
-    <footer id="contact" className="relative border-t border-white/5 text-white py-16 overflow-hidden">
-      <div className="container relative z-10 mx-auto px-4 text-center">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-8 justify-items-center">
-          {/* Logo & Description */}
-          <div>
-            <div className="flex items-center gap-3 mb-4 justify-center">
-              <div className="w-12 h-12 bg-white/10 rounded-lg flex items-center justify-center">
-                <span className="font-display font-bold text-lg text-accent">TPC</span>
+    <footer id="contact" className="footer">
+      <div className="footer-container">
+        <div className="footer-main">
+          {/* Logo Section */}
+          <div className="footer-logo-section">
+            <img src={Logo} alt="TPC PCE Logo" className="footer-logo" />
+          </div>
+
+          {/* Links Grid */}
+          <div className="footer-grid">
+            <div className="footer-box">
+              <h3 className="footer-title">Links</h3>
+              <ul className="footer-links">
+                <li><NavLink to="/" onClick={topFunction}>Home</NavLink></li>
+                <li><NavLink to="/about" onClick={topFunction}>About</NavLink></li>
+                <li><NavLink to="/events" onClick={topFunction}>Events</NavLink></li>
+                <li><NavLink to="/contact" onClick={topFunction}>Contact</NavLink></li>
+              </ul>
+            </div>
+
+            <div className="footer-box">
+              <h3 className="footer-title">Team</h3>
+              <ul className="footer-links">
+                <li><NavLink to="/committee" onClick={topFunction}>Committee</NavLink></li>
+                <li><NavLink to="/faculty" onClick={topFunction}>Faculty</NavLink></li>
+              </ul>
+            </div>
+
+            <div className="footer-box">
+              <h3 className="footer-title">Other services</h3>
+              <ul className="footer-links">
+                <li><a target="_blank" href="https://linktr.ee/TPCPCE" rel="noreferrer">LinkTree</a></li>
+                <li><a target="_blank" href="https://www.pce.ac.in/" rel="noreferrer">PCE</a></li>
+                <li><a target="_blank" href="https://www.instagram.com/tpc.pce/" rel="noreferrer">Social-Media</a></li>
+              </ul>
+            </div>
+
+            <div className="footer-box">
+              <h3 className="footer-title">Contact</h3>
+              <ul className="footer-links contact-info">
+                <li><a href="tel:022-27456100">022-27456100</a></li>
+                <li><a href="tel:022-27482400">022-27482400</a></li>
+                <li><a href="mailto:studenttpc@mes.ac.in">studenttpc@mes.ac.in</a></li>
+              </ul>
+              <div className="footer-socials">
+                <a href="https://www.instagram.com/tpc.pce/" target="_blank" rel="noreferrer" className="social-icon instagram">
+                  <FontAwesomeIcon icon={faInstagram} />
+                </a>
+                <a href="https://www.facebook.com/tpc.pce" target="_blank" rel="noreferrer" className="social-icon facebook">
+                  <FontAwesomeIcon icon={faFacebook} />
+                </a>
+                <a href="https://www.linkedin.com/company/tpc-pce" target="_blank" rel="noreferrer" className="social-icon linkedin">
+                  <FontAwesomeIcon icon={faLinkedin} />
+                </a>
               </div>
             </div>
-            <p className="text-white/70 text-sm leading-relaxed mx-auto max-w-xs">
-              Training and Placement Cell of PCE - Bridging the gap between academia and industry.
-            </p>
-          </div>
-
-          {/* Links */}
-          <div>
-            <h4 className="font-semibold text-accent mb-4">Links</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#home" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Home
-                </a>
-              </li>
-              <li>
-                <a href="#contact" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Contact
-                </a>
-              </li>
-              <li>
-                <a href="#about" className="text-white/70 hover:text-white transition-colors text-sm">
-                  About Us
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Team */}
-          <div>
-            <h4 className="font-semibold text-accent mb-4">Team</h4>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Committee
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-white/70 hover:text-white transition-colors text-sm">
-                  Faculty
-                </a>
-              </li>
-            </ul>
-          </div>
-
-          {/* Contact */}
-          <div>
-            <h4 className="font-semibold text-accent mb-4">Contact</h4>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-2 text-white/70 text-sm justify-center">
-                <Phone className="w-4 h-4" />
-                <span>022-27456100</span>
-              </li>
-              <li className="flex items-center gap-2 text-white/70 text-sm justify-center">
-                <Phone className="w-4 h-4" />
-                <span>022-27482400</span>
-              </li>
-              <li className="flex items-center gap-2 text-sm justify-center text-left">
-                <Mail className="w-4 h-4 text-accent" />
-                <div>
-                  <span className="text-accent">Email: </span>
-                  <a href="mailto:studenttpc@mes.ac.in" className="text-white/70 hover:text-white transition-colors">
-                    studenttpc@mes.ac.in
-                  </a>
-                </div>
-              </li>
-            </ul>
-
-            {/* Social Icons */}
-            <div className="flex gap-4 mt-6 justify-center">
-              <a
-                href="#"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
-              >
-                <Instagram className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
-              >
-                <Linkedin className="w-5 h-5" />
-              </a>
-              <a
-                href="#"
-                className="w-10 h-10 bg-white/10 rounded-full flex items-center justify-center hover:bg-white/20 transition-colors"
-              >
-                <Facebook className="w-5 h-5" />
-              </a>
-            </div>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="mt-12 pt-8 border-t border-white/10 text-center">
-          <p className="text-white/50 text-sm">
-            © 2025 Inspiria 5.0. All rights reserved. | TPC-PCE
-          </p>
-        </div>
+
       </div>
+
+      {/* Scroll to Top Button */}
+      <button
+        className={`scroll-to-top ${showScroll ? 'visible' : ''}`}
+        onClick={topFunction}
+        aria-label="Scroll to top"
+      >
+        <FontAwesomeIcon icon={faArrowUp} />
+      </button>
     </footer>
   );
 };

@@ -1,188 +1,144 @@
 import { useState } from 'react';
 import { Card, CardContent } from '@/components/ui/card';
-import { Clock, Image as ImageIcon, User, Info } from 'lucide-react';
-import { BlurText, GridScan, TrueFocus, MagicBento, AnimatedList } from '@/components/effects';
+import { GridScan, TrueFocus } from '@/components/effects';
 
 const tabs = [
   { id: 'inspiria', label: 'INSPIRIA 5.0' },
-  { id: 'day1', label: 'EVENT TIMELINE' },
+  { id: 'speaker', label: 'SPEAKER' },
   { id: 'gallery', label: 'IMAGE GALLERY' },
   { id: 'about', label: 'ABOUT TPC-PCE' },
 ];
 
-const day1Events = [
-  { time: '10:00 AM', title: 'Inauguration', description: 'Opening ceremony and welcome address' },
-  { time: '11:00 AM', title: 'Keynote', description: 'Industry expert keynote session' },
-  { time: '12:30 PM', title: 'Technical Session', description: 'Deep dive into latest technologies' },
-  { time: '02:00 PM', title: 'Workshop', description: 'Hands-on technical workshop' },
-  { time: '03:30 PM', title: 'Panel Discussion', description: 'Industry leaders share insights' },
-  { time: '05:00 PM', title: 'Networking', description: 'Connect with peers and professionals' }
-];
-
-
-
-const speakers = [
-  {
-    name: 'Mr. Dinesh Kumar (Prof. Dineshkumar Gupta)',
-    company: 'Renowned Educator / Visionary Teacher',
-    eventTitle: 'From Classroom to Cubicle',
-    description: 'An inspiring session bridging the gap between academics and the corporate world, focusing on problem-solving skills, career insights, and professional growth using innovative teaching methods and strong digital presence.',
-    date: '25th February 2025',
-    time: '3:00 PM – 5:00 PM',
-    venue: 'Auditorium, Pillai College of Engineering, New Panvel',
-    organizer: 'Training & Placement Cell (TPC-PCE)',
-    image: '/images/dinesh-kumar.png'
-  }
-];
-
-const testimonialImages = Array(8).fill(null);
-
 export const EventSchedule = () => {
   const [activeTab, setActiveTab] = useState('inspiria');
-  const [selectedSpeaker, setSelectedSpeaker] = useState<any>(null);
-  const [selectedGalleryImage, setSelectedGalleryImage] = useState<any>(null);
 
   const renderTabContent = () => {
     switch (activeTab) {
       case 'inspiria':
         return (
-          <Card className="glass-dark border-0 shadow-lg overflow-hidden">
-            <CardContent className="p-0">
-              <div className="grid md:grid-cols-2 gap-0">
-                {/* Poster placeholder */}
-                <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-8 flex items-center justify-center min-h-[300px]">
-                  <div className="text-center">
-                    <div className="w-48 h-64 mx-auto bg-gradient-to-br from-primary to-primary/80 rounded-lg shadow-xl flex flex-col items-center justify-center text-white p-4">
-                      <span className="text-xs tracking-widest mb-2">✦ ✦ ✦</span>
-                      <span className="font-display text-2xl font-bold">inspiria</span>
-                      <span className="text-3xl font-display font-bold text-accent">2025</span>
-                      <span className="text-xs mt-4 text-white/70">26th & 27th February 2025</span>
+          <div className="max-w-4xl mx-auto">
+            <Card className="glass-dark border-0 shadow-lg overflow-hidden" style={{ backgroundColor: 'rgba(15, 23, 42, 0.6)' }}>
+              <CardContent className="p-8 md:p-12 text-center">
+                <h3 className="text-3xl md:text-4xl font-display font-bold text-gradient-gold mb-6">
+                  Welcome to Inspiria 5.0
+                </h3>
+                <p className="text-muted-foreground text-base md:text-lg leading-relaxed max-w-3xl mx-auto">
+                  Inspiria 5.0, the flagship event of TPC-PCE, is designed to equip students with
+                  the essential skills and knowledge needed to tackle real-world challenges. By
+                  blending industry insights with interactive sessions, the event features expert-led
+                  talks and engaging activities that enhance practical understanding. Its primary
+                  aim is to cultivate the right mindset, deepen industry awareness, and seamlessly bridge academic learning with real-world experience.
+                </p>
+              </CardContent>
+            </Card>
+          </div>
+        );
+
+      case 'speaker':
+        return (
+          <div className="max-w-5xl mx-auto">
+            <Card className="glass-dark border-0 shadow-lg overflow-hidden" style={{ backgroundColor: 'rgba(15, 23, 42, 0.7)' }}>
+              <CardContent className="p-0">
+                <div className="grid md:grid-cols-3 gap-0">
+                  {/* Speaker Photo - 1/3 with "3rd image" style frame */}
+                  <div className="md:col-span-1 p-6 flex items-center justify-center bg-accent/5 backdrop-blur-sm border-r border-white/5">
+                    <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border-4 border-accent/20 group">
+                      <img
+                        src="/images/speaker.jpg"
+                        alt="Mr. Pramod Baviskar"
+                        className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                      />
+                      <div className="absolute inset-0 ring-1 ring-inset ring-white/20 rounded-xl" />
+                    </div>
+                  </div>
+
+                  {/* Speaker Info - 2/3 */}
+                  <div className="md:col-span-2 p-8 md:p-12 flex flex-col justify-center">
+                    <h4 className="text-accent uppercase tracking-[0.2em] text-xs font-bold mb-3">FROM CLASSROOM TO CUBICLE</h4>
+                    <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-2">
+                      Mr. Pramod Baviskar
+                    </h3>
+                    <p className="text-primary-foreground/80 font-medium text-lg mb-6">AI Data Science Analyst at Accenture Strategy & Consulting</p>
+                    <p className="text-white/70 leading-relaxed text-sm md:text-base">
+                      Specializing in AI, GenAI and data-driven systems, his professional
+                      journey reflects the evolving demands of today’s tech industry. An AI Data Science Analyst at Accenture Strategy & Consulting, Mr. Pramod Baviskar specializes in AI, GenAI and data-driven systems. His professional journey reflects the evolving demands of today’s tech industry.
+                    </p>
+
+                    <div className="mt-8 pt-8 border-t border-white/10 flex flex-wrap gap-4">
+                      <div className="px-5 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-accent uppercase tracking-wider">
+                        Keynote Speaker
+                      </div>
+                      <div className="px-5 py-2 rounded-xl bg-primary/10 border border-primary/20 text-xs font-semibold text-primary uppercase tracking-wider">
+                        Industry Expert
+                      </div>
                     </div>
                   </div>
                 </div>
-                {/* Content */}
-                <div className="p-8 md:p-10 flex flex-col justify-center">
-                  <h3 className="text-2xl md:text-3xl font-display font-bold text-gradient-gold mb-4">
-                    Welcome to Inspiria 5.0
-                  </h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    Inspiria is a testament to revolution and progress. It's a rendezvous of innovation and inspiration,
-                    where students gain valuable insights helping them develop the right mindset. Inspiria also aims to
-                    bridge the gap between academic learning and real-world application. It is an immersive event that
-                    seamlessly blends professional development and technical expertise.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
-        );
-
-      case 'day1':
-        const eventItems = day1Events.map((event, index) => (
-          <div key={index} className="flex items-start gap-4 p-2">
-            <div className="flex items-center gap-2 text-primary font-semibold min-w-[120px]">
-              <Clock className="w-4 h-4" />
-              {event.time}
-            </div>
-            <div>
-              <h4 className="font-semibold text-foreground text-lg">{event.title}</h4>
-              <p className="text-muted-foreground text-sm mt-1">{event.description}</p>
-            </div>
+              </CardContent>
+            </Card>
           </div>
-        ));
-
-        return (
-          <AnimatedList
-            items={eventItems}
-            enableArrowNavigation={false}
-            showGradients={true}
-            displayScrollbar={false}
-            className="max-w-3xl mx-auto"
-          />
         );
 
       case 'gallery':
-        const bentoCards = [
-          {
-            title: 'Keynote Session',
-            description: 'Prof. Dinesh Kumar sharing visionary insights on professional growth.',
-            label: 'Vision',
-            color: '#1a103d',
-            image: '/images/gallery-1.jpg'
-          },
-          {
-            title: 'Interactive Learning',
-            description: 'Engaging discussions bridging the gap between classroom and corporate life.',
-            label: 'Engage',
-            color: '#2d1b4e',
-            image: '/images/gallery-2.jpg'
-          },
-          {
-            title: 'Audience Focus',
-            description: 'Students absorbing transformative ideas for their future careers.',
-            label: 'Inspire',
-            color: '#1a103d',
-            image: '/images/gallery-3.jpg'
-          },
-          {
-            title: 'Expert Talk',
-            description: 'In-depth session exploring modern industry requirements.',
-            label: 'Growth',
-            color: '#2d1b4e',
-            image: '/images/gallery-4.jpg'
-          },
-          {
-            title: 'Special Recognition',
-            description: 'Honoring excellence and commitment to student development.',
-            label: 'Honored',
-            color: '#1a103d',
-            image: '/images/gallery-5.jpg'
-          },
-          {
-            title: 'Organizing Team',
-            description: 'The dedicated TPC-PCE team behind the successful event.',
-            label: 'Network',
-            color: '#2d1b4e',
-            image: '/images/gallery-1.jpg'
-          }
+        const galleryImages = [
+          '/images/gallery-1.jpg',
+          '/images/gallery-2.jpg',
+          '/images/gallery-3.jpg',
+          '/images/gallery-4.jpg',
+          '/images/gallery-5.jpg',
+          '/images/gallery-6.jpg',
         ];
+        const duplicatedImages = [...galleryImages, ...galleryImages, ...galleryImages, ...galleryImages];
 
         return (
-          <MagicBento
-            cardData={bentoCards}
-            spotlightRadius={610}
-            enableTilt={true}
-            enableMagnetism={true}
-            glowColor="255, 215, 0"
-            onCardClick={(card) => setSelectedGalleryImage(card)}
-          />
+          <div className="relative overflow-hidden group py-4">
+            {/* Gradient Masking */}
+            <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-background to-transparent z-10 pointer-events-none" />
+            <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-background to-transparent z-10 pointer-events-none" />
+
+            <div className="flex w-max animate-marquee-slow group-hover:[animation-play-state:paused] whitespace-nowrap">
+              {duplicatedImages.map((src, index) => (
+                <div key={index} className="flex-none w-[300px] h-[200px] md:w-[400px] md:h-[250px] mx-4 rounded-2xl overflow-hidden shadow-2xl border border-white/10 glass-dark">
+                  <img
+                    src={src}
+                    alt={`Event gallery ${index + 1}`}
+                    className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                  />
+                </div>
+              ))}
+            </div>
+          </div>
         );
-
-
-
 
       case 'about':
         return (
-          <Card className="glass-dark border-0 shadow-lg overflow-hidden">
-            <CardContent className="p-0">
-              <div className="grid md:grid-cols-2 gap-0">
-                <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-8 flex items-center justify-center min-h-[250px] group">
-                  <div className="w-32 h-32 bg-primary/20 rounded-xl flex items-center justify-center transition-transform duration-300 group-hover:scale-110">
-                    <Info className="w-12 h-12 text-accent transition-colors duration-300 group-hover:text-primary-foreground" />
+          <div className="max-w-4xl mx-auto">
+            <Card className="glass-dark border-0 shadow-lg overflow-hidden" style={{ backgroundColor: 'rgba(15, 23, 42, 0.6)' }}>
+              <CardContent className="p-0">
+                <div className="grid md:grid-cols-2 gap-0">
+                  <div className="bg-gradient-to-br from-primary/10 to-accent/10 p-0 flex items-center justify-center min-h-[200px] group overflow-hidden">
+                    <img
+                      src="/images/about-tpc-group.jpg"
+                      alt="TPC PCE Group"
+                      className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                    />
+                  </div>
+                  <div className="p-6 md:p-8 flex flex-col justify-center">
+                    <h3 className="text-xl md:text-2xl font-display font-bold text-gradient-gold mb-3">About TPC-PCE</h3>
+                    <p className="text-muted-foreground text-xs md:text-sm leading-relaxed">
+                      The Training and Placement Committee (TPC) serves as a robust bridge
+                      between academic learning and professional excellence. Managed with a vision
+                      to nurture "industry-ready" graduates, the committee operates as an integrated
+                      ecosystem that handles everything from skill development to corporate
+                      recruitment.TPC ensures that every eligible student has the platform to launch a
+                      successful career. Its commitment to holistic development makes it the
+                      cornerstone of the institution’s success in the competitive engineering landscape.
+                    </p>
                   </div>
                 </div>
-                <div className="p-8 flex flex-col justify-center">
-                  <h3 className="text-2xl font-display font-bold text-gradient-gold mb-4">About TPC-PCE</h3>
-                  <p className="text-muted-foreground leading-relaxed">
-                    The Training and Placement Cell of PCE is dedicated to providing students with the best
-                    opportunities to launch their careers. We bridge the gap between academia and industry,
-                    preparing students for the professional world through skill development, internships,
-                    and placement drives.
-                  </p>
-                </div>
-              </div>
-            </CardContent>
-          </Card>
+              </CardContent>
+            </Card>
+          </div>
         );
 
       default:
@@ -243,37 +199,7 @@ export const EventSchedule = () => {
       {/* Bottom Transition Gradient */}
       <div className="absolute bottom-0 left-0 w-full h-32 bg-gradient-to-t from-background to-transparent z-20 pointer-events-none" />
 
-      {/* Image Gallery Popup Modal */}
-      {selectedGalleryImage && (
-        <div
-          className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-8 bg-black/80 backdrop-blur-md animate-fade-in"
-          onClick={() => setSelectedGalleryImage(null)}
-        >
-          <div
-            className="relative max-w-5xl w-full max-h-[90vh] bg-white/10 rounded-2xl overflow-hidden shadow-2xl border border-white/20 animate-scale-up"
-            onClick={(e) => e.stopPropagation()}
-          >
-            {/* Close Button */}
-            <button
-              className="absolute top-4 right-4 z-10 w-10 h-10 bg-black/50 hover:bg-black/80 text-white rounded-full flex items-center justify-center transition-colors"
-              onClick={() => setSelectedGalleryImage(null)}
-            >
-              ✕
-            </button>
 
-            <img
-              src={selectedGalleryImage.image}
-              alt={selectedGalleryImage.title}
-              className="w-full h-full object-contain"
-            />
-
-            <div className="absolute bottom-0 left-0 w-full p-6 bg-gradient-to-t from-black/80 to-transparent">
-              <h3 className="text-xl font-display font-bold text-white mb-1">{selectedGalleryImage.title}</h3>
-              <p className="text-white/70 text-sm">{selectedGalleryImage.description}</p>
-            </div>
-          </div>
-        </div>
-      )}
     </section>
   );
 };

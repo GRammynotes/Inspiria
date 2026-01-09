@@ -100,6 +100,15 @@
   body {
     @apply bg-background text-foreground antialiased;
     font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    /* Default for mobile */
+  }
+
+  @media (min-width: 768px) {
+    body {
+      font-size: 16px;
+      /* Desktop view kept robust */
+    }
   }
 
   html {
@@ -644,12 +653,15 @@
 }
 
 .animate-marquee {
-  animation: marquee 15s linear infinite;
+  animation: marquee 11s linear infinite;
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
 }
 
 @media (max-width: 768px) {
   .animate-marquee {
-    animation-duration: 10s;
+    animation-duration: 7s;
   }
 }
 
@@ -661,14 +673,7 @@
   animation-play-state: paused !important;
 }
 
-/* Disable marquee scroll on mobile */
-@media (max-width: 599px) {
-  .animate-marquee-slow {
-    animation: none !important;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-}
+
 
 .animate-marquee:hover {
   animation-play-state: paused;

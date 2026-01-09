@@ -3,11 +3,9 @@ import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 
 const navLinks = [
-  { href: '#home', label: 'Home' },
-  { href: '#about', label: 'About' },
-  { href: '#team', label: 'Team' },
-  { href: '#statistics', label: 'Statistics' },
-  { href: '#placements', label: 'Placements' },
+  { href: '#inspiria', label: 'Home' },
+  { href: '#schedule', label: 'Schedule' },
+  { href: '#testimonials', label: 'Testimonials' },
   { href: '#contact', label: 'Contact' },
 ];
 
@@ -34,13 +32,12 @@ export const Navbar = () => {
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
         {/* Premium Logo */}
-        <a href="#home" className="group flex items-center gap-2">
-          {/* Logo emblem - hexagon style */}
-          <div className="bg-white/95 py-0 px-16 rounded-lg shadow-[0_0_20px_rgba(255,255,255,0.8)] hover:shadow-[0_0_30px_rgba(255,255,255,1)] transition-all duration-300 overflow-hidden">
+        <a href="#inspiria" className="group flex items-center gap-2">
+          <div className="bg-transparent py-0 transition-all duration-300">
             <img
-              src="/images/inspiria-logo.png"
+              src="/images/inspiria logo.png"
               alt="Inspiria Logo"
-              className="h-16 w-auto object-contain transform scale-[3]"
+              className="h-14 w-auto object-contain"
             />
           </div>
         </a>

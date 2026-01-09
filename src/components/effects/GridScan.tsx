@@ -72,7 +72,7 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
     for (int i = 0; i < 4; i++)
     {
         float isY = float(i < 2);
-        float pos = mix(-0.2, 0.2, float(i)) * isY + mix(-0.5, 0.5, float(i - 2)) * (1.0 - isY);
+        float pos = mix(-0.4, 0.4, float(i)) * isY + mix(-0.4, 0.4, float(i - 2)) * (1.0 - isY);
         float num = pos - (isY * ro.y + (1.0 - isY) * ro.x);
         float den = isY * rd.y + (1.0 - isY) * rd.x;
         float t = num / den;
@@ -180,19 +180,19 @@ void mainImage(out vec4 fragColor, in vec2 fragCoord)
   }
     float altMask = max(lineX2, lineY2);
 
-    float edgeDistX = min(abs(hit.x - (-0.5)), abs(hit.x - 0.5));
-    float edgeDistY = min(abs(hit.y - (-0.2)), abs(hit.y - 0.2));
+    float edgeDistX = min(abs(hit.x - (-0.4)), abs(hit.x - 0.4));
+    float edgeDistY = min(abs(hit.y - (-0.4)), abs(hit.y - 0.4));
     float edgeDist = mix(edgeDistY, edgeDistX, hitIsY);
     float edgeGate = 1.0 - smoothstep(gridScale * 0.5, gridScale * 2.0, edgeDist);
     altMask *= edgeGate;
 
   float lineMask = max(primaryMask, altMask);
 
-    float fade = exp(-dist * fadeStrength);
+    float fade = exp(-dist * 1.5);
 
     float dur = max(0.05, uScanDuration);
     float del = max(0.0, uScanDelay);
-    float scanZMax = 2.0;
+    float scanZMax = 6.0;
     float widthScale = max(0.1, uScanGlow);
     float sigma = max(0.001, 0.18 * widthScale * uScanSoftness);
     float sigmaA = sigma * 2.0;
@@ -501,11 +501,16 @@ export const GridScan = ({
         }
 
         const onResize = () => {
-            renderer.setSize(container.clientWidth, container.clientHeight);
-            material.uniforms.iResolution.value.set(container.clientWidth, container.clientHeight, renderer.getPixelRatio());
-            if (composerRef.current) composerRef.current.setSize(container.clientWidth, container.clientHeight);
+            const width = container.clientWidth;
+            const height = container.clientHeight;
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+            renderer.setSize(width, height);
+            material.uniforms.iResolution.value.set(width, height, dpr);
+            if (composerRef.current) composerRef.current.setSize(width, height);
         };
-        window.addEventListener('resize', onResize);
+
+        const resizeObserver = new ResizeObserver(onResize);
+        resizeObserver.observe(container);
 
         let last = performance.now();
         const tick = () => {
@@ -557,7 +562,7 @@ export const GridScan = ({
 
         return () => {
             if (rafRef.current) cancelAnimationFrame(rafRef.current);
-            window.removeEventListener('resize', onResize);
+            resizeObserver.disconnect();
             material.dispose();
             quad.geometry.dispose();
 

@@ -168,16 +168,18 @@ export default function PixelCard({ variant = 'default', gap, speed, colors, noF
     const initPixels = () => {
         if (!containerRef.current || !canvasRef.current) return;
 
+        const dpr = window.devicePixelRatio || 1;
         const rect = containerRef.current.getBoundingClientRect();
         const width = Math.floor(rect.width);
         const height = Math.floor(rect.height);
         const ctx = canvasRef.current.getContext('2d');
         if (!ctx) return;
 
-        canvasRef.current.width = width;
-        canvasRef.current.height = height;
+        canvasRef.current.width = width * dpr;
+        canvasRef.current.height = height * dpr;
         canvasRef.current.style.width = `${width}px`;
         canvasRef.current.style.height = `${height}px`;
+        ctx.scale(dpr, dpr);
 
         const colorsArray = finalColors.split(',');
         const pxs = [];
