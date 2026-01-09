@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Clock, MapPin, Phone } from 'lucide-react';
 import { Card, CardContent } from '@/components/ui/card';
 import { GridScan, TrueFocus } from '@/components/effects';
 
@@ -40,36 +41,88 @@ export const EventSchedule = () => {
             <Card className="glass-dark border-0 shadow-lg overflow-hidden" style={{ backgroundColor: 'rgba(15, 23, 42, 0.7)' }}>
               <CardContent className="p-0">
                 <div className="grid md:grid-cols-3 gap-0">
-                  {/* Speaker Photo - 1/3 with "3rd image" style frame */}
-                  <div className="md:col-span-1 p-6 flex items-center justify-center bg-accent/5 backdrop-blur-sm border-r border-white/5">
-                    <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border-4 border-accent/20 group">
+                  {/* Speaker Info & Photo - 1/3 */}
+                  <div className="md:col-span-1 p-6 flex flex-col items-center justify-center bg-gradient-to-br from-white/10 via-accent/5 to-transparent backdrop-blur-md border-r border-white/10 text-center relative overflow-hidden group/shine">
+                    {/* Shine effect overlay */}
+                    <div className="absolute inset-0 bg-gradient-to-b from-white/10 to-transparent opacity-50 pointer-events-none" />
+
+                    {/* Name & Role moved above image */}
+                    <div className="mb-6 w-full relative z-10">
+                      <h3 className="text-2xl font-display font-bold text-gradient-gold mb-2 leading-tight drop-shadow-sm">
+                        Mr. Pramod Baviskar
+                      </h3>
+                      <p className="text-primary-foreground/90 font-medium text-sm leading-snug">
+                        AI Data Science Analyst at<br />Accenture Strategy & Consulting
+                      </p>
+                    </div>
+
+                    <div className="relative w-full aspect-[4/5] rounded-xl overflow-hidden shadow-2xl border-4 border-accent/20 group max-w-[280px] mx-auto z-10">
                       <img
                         src="/images/speaker.jpg"
                         alt="Mr. Pramod Baviskar"
                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                       />
                       <div className="absolute inset-0 ring-1 ring-inset ring-white/20 rounded-xl" />
+                      {/* Image Shine */}
+                      <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+                    </div>
+
+                    {/* Tags moved below image */}
+                    <div className="mt-6 flex flex-wrap justify-center gap-3 relative z-10">
+                      <div className="px-4 py-1.5 rounded-lg bg-white/5 border border-white/10 text-[10px] font-semibold text-accent uppercase tracking-wider shadow-sm backdrop-blur-sm">
+                        Keynote Speaker
+                      </div>
+                      <div className="px-4 py-1.5 rounded-lg bg-primary/10 border border-primary/20 text-[10px] font-semibold text-primary uppercase tracking-wider shadow-sm backdrop-blur-sm">
+                        Industry Expert
+                      </div>
                     </div>
                   </div>
 
-                  {/* Speaker Info - 2/3 */}
-                  <div className="md:col-span-2 p-8 md:p-12 flex flex-col justify-center">
-                    <h4 className="text-accent uppercase tracking-[0.2em] text-xs font-bold mb-3">FROM CLASSROOM TO CUBICLE</h4>
-                    <h3 className="text-3xl md:text-4xl font-display font-bold text-white mb-2">
-                      Mr. Pramod Baviskar
-                    </h3>
-                    <p className="text-primary-foreground/80 font-medium text-lg mb-6">AI Data Science Analyst at Accenture Strategy & Consulting</p>
-                    <p className="text-white/70 leading-relaxed text-sm md:text-base">
+                  {/* Session Content - 2/3 */}
+                  <div className="md:col-span-2 p-6 md:p-8 flex flex-col justify-center text-center">
+                    <h4 className="text-accent uppercase tracking-widest text-lg md:text-xl font-bold mb-4 border-b border-accent/20 pb-4 inline-block w-full text-center">
+                      FROM CLASSROOM TO CUBICLE
+                    </h4>
+
+                    <p className="text-white/80 leading-relaxed text-base md:text-lg mb-2 text-center max-w-2xl mx-auto">
                       Specializing in AI, GenAI and data-driven systems, his professional
                       journey reflects the evolving demands of today’s tech industry. An AI Data Science Analyst at Accenture Strategy & Consulting, Mr. Pramod Baviskar specializes in AI, GenAI and data-driven systems. His professional journey reflects the evolving demands of today’s tech industry.
                     </p>
 
-                    <div className="mt-8 pt-8 border-t border-white/10 flex flex-wrap gap-4">
-                      <div className="px-5 py-2 rounded-xl bg-white/5 border border-white/10 text-xs font-semibold text-accent uppercase tracking-wider">
-                        Keynote Speaker
+                    {/* Event Details Block */}
+                    <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto w-full">
+                      {/* Time & Location */}
+                      <div className="bg-white/5 border border-white/10 rounded-xl p-5 flex flex-col items-center justify-center space-y-3 hover:bg-white/10 transition-colors duration-300 shadow-md">
+                        <div className="flex items-center gap-3">
+                          <Clock className="w-5 h-5 text-accent" />
+                          <span className="text-sm text-white/90 font-medium">2:00 PM – 5:00 PM</span>
+                        </div>
+                        <div className="flex items-start gap-3">
+                          <MapPin className="w-5 h-5 text-accent shrink-0 mt-0.5" />
+                          <span className="text-sm text-white/90 font-medium leading-tight text-left">Auditorium, Pillai College of Engineering, New Panvel</span>
+                        </div>
                       </div>
-                      <div className="px-5 py-2 rounded-xl bg-primary/10 border border-primary/20 text-xs font-semibold text-primary uppercase tracking-wider">
-                        Industry Expert
+
+                      {/* Contact Info */}
+                      <div className="bg-white/5 border border-white/10 rounded-xl p-5 hover:bg-white/10 transition-colors duration-300 shadow-md flex flex-col items-center">
+                        <div className="flex items-center gap-2 mb-3">
+                          <Phone className="w-4 h-4 text-accent" />
+                          <span className="text-xs font-bold text-accent uppercase tracking-wider">For Queries</span>
+                        </div>
+                        <div className="space-y-2 text-xs text-white/70 w-full max-w-[240px]">
+                          <div className="flex justify-between items-center group/item hover:bg-white/5 p-1 rounded transition-colors border-b border-white/5">
+                            <span className="group-hover/item:text-white transition-colors font-medium">Atharv Gunjal</span>
+                            <span className="text-white/90 font-mono tracking-wide">8779261491</span>
+                          </div>
+                          <div className="flex justify-between items-center group/item hover:bg-white/5 p-1 rounded transition-colors border-b border-white/5">
+                            <span className="group-hover/item:text-white transition-colors font-medium">Jidnyasa Chimane</span>
+                            <span className="text-white/90 font-mono tracking-wide">9769498575</span>
+                          </div>
+                          <div className="flex justify-between items-center group/item hover:bg-white/5 p-1 rounded transition-colors">
+                            <span className="group-hover/item:text-white transition-colors font-medium">Abhishek Nair</span>
+                            <span className="text-white/90 font-mono tracking-wide">9960072918</span>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>

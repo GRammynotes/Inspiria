@@ -1,8 +1,8 @@
 .footer {
     background: hsl(var(--navy-deep));
     color: #fff;
-    padding: 30px 0 20px 0;
-    /* Reduced padding to decrease empty space */
+    padding: 15px 0 10px 0;
+    /* Reduced padding further */
     position: relative;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     font-family: 'Inter', sans-serif;
@@ -22,13 +22,13 @@
 }
 
 .footer-logo-section {
-    flex: 0 0 250px;
-    /* Increased to accommodate larger logo */
+    flex: 0 0 200px;
+    /* Decreased */
 }
 
 .footer-logo {
-    width: 200px;
-    /* Increased logo size (zoomed) */
+    width: 150px;
+    /* Decreased logo size */
     height: auto;
     filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.15));
     transition: transform 0.3s ease;
@@ -254,8 +254,34 @@
         font-size: 1rem;
     }
 
-    .scroll-to-top {
-        bottom: 20px;
-        right: 20px;
+    .footer-title {
+        font-size: 1rem;
     }
+
+    .scroll-to-top {
+        display: none !important;
+        /* Hide fixed button on mobile */
+    }
+
+    .mobile-scroll-top {
+        display: flex !important;
+        /* Show inline button on mobile */
+    }
+}
+
+/* Base style for mobile scroll top - hidden by default on desktop */
+.mobile-scroll-top {
+    display: none;
+    background: #76c783 !important;
+    /* Green background */
+    color: #fff !important;
+    border: none;
+    cursor: pointer;
+    opacity: 1 !important;
+    /* Ensure it's visible unlike the fade-in fixed one */
+}
+
+.mobile-scroll-top:hover {
+    background: #5eb46d !important;
+    transform: translateY(-3px);
 }

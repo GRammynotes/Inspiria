@@ -90,6 +90,14 @@ export const Footer = () => {
                 <a href="https://www.linkedin.com/company/tpc-pce" target="_blank" rel="noreferrer" className="social-icon linkedin">
                   <FontAwesomeIcon icon={faLinkedin} />
                 </a>
+                {/* Mobile Scroll Top Button (Inline) */}
+                <button
+                  className="social-icon mobile-scroll-top"
+                  onClick={topFunction}
+                  aria-label="Scroll to top"
+                >
+                  <FontAwesomeIcon icon={faArrowUp} />
+                </button>
               </div>
             </div>
           </div>

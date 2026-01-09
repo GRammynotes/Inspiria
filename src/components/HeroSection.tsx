@@ -202,7 +202,7 @@ export const HeroSection = () => {
           className={`text-lg md:text-xl text-white/60 italic mt-8 mb-12 font-light tracking-widest ${mounted ? 'animate-fade-in-up animation-delay-200' : 'opacity-0'
             }`}
         >
-          Innovate. Integrate. Inspire.
+          The Blueprint for your Future
         </p>
 
         {/* Countdown Timer - Hides after January 13th 1PM */}
