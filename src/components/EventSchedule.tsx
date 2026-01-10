@@ -92,10 +92,10 @@ export const EventSchedule = () => {
                     {/* Event Details Block */}
                     <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-4 max-w-3xl mx-auto w-full">
                       {/* Time & Location */}
-                      <div className="bg-white/5 border border-white/10 rounded-xl p-5 flex flex-col items-center justify-center space-y-3 hover:bg-white/10 transition-colors duration-300 shadow-md">
+                      <div className="bg-white/5 border border-white/10 rounded-xl p-5 flex flex-col items-start justify-center space-y-3 hover:bg-white/10 transition-colors duration-300 shadow-md">
                         <div className="flex items-center gap-3">
                           <Clock className="w-5 h-5 text-accent" />
-                          <span className="text-sm text-white/90 font-medium">2:00 PM – 5:00 PM</span>
+                          <span className="text-sm text-white/90 font-medium">2:00 PM – 4:00 PM</span>
                         </div>
                         <div className="flex items-start gap-3">
                           <MapPin className="w-5 h-5 text-accent shrink-0 mt-0.5" />
@@ -114,13 +114,9 @@ export const EventSchedule = () => {
                             <span className="group-hover/item:text-white transition-colors font-medium">Atharv Gunjal</span>
                             <span className="text-white/90 font-mono tracking-wide">8779261491</span>
                           </div>
-                          <div className="flex justify-between items-center group/item hover:bg-white/5 p-1 rounded transition-colors border-b border-white/5">
+                          <div className="flex justify-between items-center group/item hover:bg-white/5 p-1 rounded transition-colors">
                             <span className="group-hover/item:text-white transition-colors font-medium">Jidnyasa Chimane</span>
                             <span className="text-white/90 font-mono tracking-wide">9769498575</span>
-                          </div>
-                          <div className="flex justify-between items-center group/item hover:bg-white/5 p-1 rounded transition-colors">
-                            <span className="group-hover/item:text-white transition-colors font-medium">Abhishek Nair</span>
-                            <span className="text-white/90 font-mono tracking-wide">9960072918</span>
                           </div>
                         </div>
                       </div>

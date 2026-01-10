@@ -138,13 +138,13 @@ export const HeroSection = () => {
           transition: 'transform 0.3s ease-out',
         }}
       >
-        {/* Small tagline - flat, gold, not 3D */}
+        {/* Tagline moved to top - "The Blueprint for your Future" */}
         <p
-          className={`text-xs md:text-sm tracking-[0.5em] uppercase mb-2 font-medium ${mounted ? 'animate-fade-in-up' : 'opacity-0'
+          className={`text-lg md:text-xl tracking-widest mb-2 font-semibold italic ${mounted ? 'animate-fade-in-up' : 'opacity-0'
             }`}
           style={{ color: 'hsl(45, 90%, 55%)' }}
         >
-          Annual Techno-Management Symposium
+          The Blueprint for your Future
         </p>
 
         {/* 3D Floating Title Container - Single Line */}
@@ -197,14 +197,6 @@ export const HeroSection = () => {
           </span>
         </h1>
 
-        {/* Subtitle - calm, elegant, not animated */}
-        <p
-          className={`text-lg md:text-xl text-white/60 italic mt-8 mb-12 font-light tracking-widest ${mounted ? 'animate-fade-in-up animation-delay-200' : 'opacity-0'
-            }`}
-        >
-          The Blueprint for your Future
-        </p>
-
         {/* Countdown Timer - Hides after January 13th 1PM */}
         {!isExpired && (
           <div className="mb-10">
@@ -217,12 +209,14 @@ export const HeroSection = () => {
           className={`${mounted ? 'animate-fade-in-up animation-delay-300' : 'opacity-0'
             }`}
         >
-          <Button
-            size="lg"
-            className="bg-white text-[hsl(220,60%,8%)] hover:bg-white/95 font-bold px-12 py-7 text-base rounded-full transition-all hover:scale-105 uppercase tracking-wider shadow-[0_10px_40px_rgba(255,255,255,0.2)]"
-          >
-            Register
-          </Button>
+          <a href="https://tpc-ticketing-system.vercel.app/" target="_blank" rel="noopener noreferrer">
+            <Button
+              size="lg"
+              className="bg-white text-[hsl(220,60%,8%)] hover:bg-white/95 font-bold px-12 py-7 text-base rounded-full transition-all hover:scale-105 uppercase tracking-wider shadow-[0_10px_40px_rgba(255,255,255,0.2)]"
+            >
+              Register
+            </Button>
+          </a>
         </div>
       </div>
 

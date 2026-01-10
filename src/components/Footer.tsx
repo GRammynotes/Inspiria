@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { NavLink } from "react-router-dom";
+// NavLink removed as it is no longer used
 import {
   faFacebook,
   faInstagram,
@@ -49,18 +49,20 @@ export const Footer = () => {
             <div className="footer-box">
               <h3 className="footer-title">Links</h3>
               <ul className="footer-links">
-                <li><NavLink to="/" onClick={topFunction}>Home</NavLink></li>
-                <li><NavLink to="/about" onClick={topFunction}>About</NavLink></li>
-                <li><NavLink to="/events" onClick={topFunction}>Events</NavLink></li>
-                <li><NavLink to="/contact" onClick={topFunction}>Contact</NavLink></li>
+                <li><a href="https://tpc.pce.ac.in/" target="_blank" rel="noopener noreferrer">Home</a></li>
+                <li><a href="https://tpc.pce.ac.in/about" target="_blank" rel="noopener noreferrer">About</a></li>
+                <li><a href="https://tpc.pce.ac.in/events" target="_blank" rel="noopener noreferrer">Events</a></li>
+                <li><a href="https://tpc.pce.ac.in/contact" target="_blank" rel="noopener noreferrer">Contact</a></li>
+                <li><a href="https://tpc.pce.ac.in/statistics" target="_blank" rel="noopener noreferrer">Statistics</a></li>
+                <li><a href="https://tpc.pce.ac.in/placements" target="_blank" rel="noopener noreferrer">Placements</a></li>
               </ul>
             </div>
 
             <div className="footer-box">
               <h3 className="footer-title">Team</h3>
               <ul className="footer-links">
-                <li><NavLink to="/committee" onClick={topFunction}>Committee</NavLink></li>
-                <li><NavLink to="/faculty" onClick={topFunction}>Faculty</NavLink></li>
+                <li><a href="https://tpc.pce.ac.in/team" target="_blank" rel="noopener noreferrer">Committee</a></li>
+                <li><a href="https://tpc.pce.ac.in/team" target="_blank" rel="noopener noreferrer">Faculty</a></li>
               </ul>
             </div>
 
