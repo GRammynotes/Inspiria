@@ -81,7 +81,7 @@ export const EventSchedule = () => {
                   {/* Session Content - 2/3 */}
                   <div className="md:col-span-2 p-6 md:p-8 flex flex-col justify-center text-center">
                     <h4 className="text-accent uppercase tracking-widest text-lg md:text-xl font-bold mb-4 border-b border-accent/20 pb-4 inline-block w-full text-center">
-                      FROM CLASSROOM TO CUBICLE
+                      The Blueprint for your Future
                     </h4>
 
                     <p className="text-white/80 leading-relaxed text-base md:text-lg mb-2 text-center max-w-2xl mx-auto">
