@@ -22,13 +22,14 @@
 }
 
 .footer-logo-section {
-    flex: 0 0 200px;
-    /* Decreased */
+    flex: 0 0 auto;
+    /* Adjusted sizing */
+    margin-right: 20px;
 }
 
 .footer-logo {
-    width: 150px;
-    /* Decreased logo size */
+    width: 250px;
+    /* Increased logo size significantly */
     height: auto;
     filter: drop-shadow(0 0 12px rgba(255, 255, 255, 0.15));
     transition: transform 0.3s ease;

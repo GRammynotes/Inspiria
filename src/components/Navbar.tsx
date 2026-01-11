@@ -6,7 +6,6 @@ const navLinks = [
   { href: '#inspiria', label: 'Home' },
   { href: '#schedule', label: 'Schedule' },
   { href: '#testimonials', label: 'Testimonials' },
-  { href: '#contact', label: 'Contact' },
 ];
 
 export const Navbar = () => {

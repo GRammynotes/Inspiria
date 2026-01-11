@@ -41,7 +41,9 @@ export const Footer = () => {
         <div className="footer-main">
           {/* Logo Section */}
           <div className="footer-logo-section">
-            <img src={Logo} alt="TPC PCE Logo" className="footer-logo" />
+            <a href="https://tpc.pce.ac.in/" target="_blank" rel="noopener noreferrer">
+              <img src={Logo} alt="TPC PCE Logo" className="footer-logo" />
+            </a>
           </div>
 
           {/* Links Grid */}
@@ -53,8 +55,6 @@ export const Footer = () => {
                 <li><a href="https://tpc.pce.ac.in/about" target="_blank" rel="noopener noreferrer">About</a></li>
                 <li><a href="https://tpc.pce.ac.in/events" target="_blank" rel="noopener noreferrer">Events</a></li>
                 <li><a href="https://tpc.pce.ac.in/contact" target="_blank" rel="noopener noreferrer">Contact</a></li>
-                <li><a href="https://tpc.pce.ac.in/statistics" target="_blank" rel="noopener noreferrer">Statistics</a></li>
-                <li><a href="https://tpc.pce.ac.in/placements" target="_blank" rel="noopener noreferrer">Placements</a></li>
               </ul>
             </div>
 
