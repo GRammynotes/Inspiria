@@ -52,21 +52,47 @@ const TrueFocus = ({
     }, [manualMode, animationDuration, pauseBetweenAnimations, words.length]);
 
     useEffect(() => {
-        if (currentIndex === null || currentIndex === -1) return;
+        const updateRect = () => {
+            if (currentIndex === null || currentIndex === -1) return;
+            if (!wordRefs.current[currentIndex] || !containerRef.current) return;
 
-        if (!wordRefs.current[currentIndex] || !containerRef.current) return;
+            const parentRect = containerRef.current.getBoundingClientRect();
+            const activeRect = wordRefs.current[currentIndex]?.getBoundingClientRect();
 
-        const parentRect = containerRef.current.getBoundingClientRect();
-        const activeRect = wordRefs.current[currentIndex]?.getBoundingClientRect();
+            if (activeRect) {
+                setFocusRect({
+                    x: activeRect.left - parentRect.left,
+                    y: activeRect.top - parentRect.top,
+                    width: activeRect.width,
+                    height: activeRect.height
+                });
+            }
+        };
 
-        if (activeRect) {
-            setFocusRect({
-                x: activeRect.left - parentRect.left,
-                y: activeRect.top - parentRect.top,
-                width: activeRect.width,
-                height: activeRect.height
-            });
+        // Initial calculation
+        updateRect();
+
+        // Recalculate on any resize of the container
+        const resizeObserver = new ResizeObserver(() => {
+            updateRect();
+        });
+
+        if (containerRef.current) {
+            resizeObserver.observe(containerRef.current);
         }
+
+        // Font loading can shift layout
+        document.fonts.ready.then(updateRect);
+
+        // Window load and a small delay to catch any late layout shifts
+        window.addEventListener('load', updateRect);
+        const timer = setTimeout(updateRect, 100);
+
+        return () => {
+            resizeObserver.disconnect();
+            window.removeEventListener('load', updateRect);
+            clearTimeout(timer);
+        };
     }, [currentIndex, words.length]);
 
     // Handle external index changes if controlled, or notify if internal changes

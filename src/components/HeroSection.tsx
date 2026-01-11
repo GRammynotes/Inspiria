@@ -1,6 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { useEffect, useState, useRef } from 'react';
-import { LightRays, Hyperspeed, SparklesText, ShinyText } from '@/components/effects';
+import { LightRays, Hyperspeed, SparklesText } from '@/components/effects';
 import { CountdownTimer } from '@/components/CountdownTimer';
 
 // Event date - January 13, 2026 at 1:00 PM
@@ -87,21 +87,21 @@ export const HeroSection = () => {
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
       style={{ backgroundColor: '#222F66' }}
     >
-      {/* Sharp Hyperspeed + GridScan Background - NO BLUR */}
-      {/* Sharp Hyperspeed + GridScan Background - NO BLUR */}
-      {/* HyperspeedBackground removed for performance optimization, using Hyperspeed component instead */}
+
 
       <div style={{ width: '100%', height: '600px', position: 'absolute', top: 0, left: 0, zIndex: 10, display: 'flex', justifyContent: 'center' }}>
         <LightRays
           raysOrigin="top-center"
-          raysColor="#222F66"
-          raysSpeed={1.5}
-          lightSpread={0.8}
-          rayLength={1.2}
+          raysColor="#ffffff"
+          raysSpeed={2.4}
+          lightSpread={1.4}
+          rayLength={3.0}
+          fadeDistance={1.7}
+          saturation={1.7}
           followMouse={true}
-          mouseInfluence={0.1}
-          noiseAmount={0.1}
-          distortion={0.05}
+          mouseInfluence={0.6}
+          noiseAmount={0.21}
+          distortion={0}
           className="custom-rays"
         />
       </div>
@@ -140,7 +140,7 @@ export const HeroSection = () => {
       >
         {/* Tagline moved to top - "The Blueprint for your Future" */}
         <p
-          className={`text-lg md:text-xl tracking-widest mb-2 font-semibold italic ${mounted ? 'animate-fade-in-up' : 'opacity-0'
+          className={`text-sm md:text-xl tracking-[0.2em] uppercase mb-6 md:mb-8 font-semibold ${mounted ? 'animate-fade-in-up' : 'opacity-0'
             }`}
           style={{ color: 'hsl(45, 90%, 55%)' }}
         >
@@ -149,7 +149,7 @@ export const HeroSection = () => {
 
         {/* 3D Floating Title Container - Single Line */}
         <h1
-          className={`hero-title-3d flex items-baseline justify-center gap-2 md:gap-4 font-display text-[clamp(2.5rem,10vw,8rem)] font-bold whitespace-nowrap ${mounted ? 'animate-fade-in-up animation-delay-100' : 'opacity-0'}`}
+          className={`hero-title-3d flex items-baseline justify-center gap-2 md:gap-4 font-display text-[clamp(2.8rem,11vw,9rem)] font-bold whitespace-nowrap mb-8 md:mb-12 ${mounted ? 'animate-fade-in-up animation-delay-100' : 'opacity-0'}`}
           style={{
             animation: mounted ? 'hero-float 6s ease-in-out infinite' : 'none',
             color: 'white',
@@ -199,7 +199,7 @@ export const HeroSection = () => {
 
         {/* Countdown Timer - Hides after January 13th 1PM */}
         {!isExpired && (
-          <div className="mb-10">
+          <div className="mb-12 md:mb-16">
             <CountdownTimer targetDate={EVENT_DATE} />
           </div>
         )}
@@ -224,9 +224,9 @@ export const HeroSection = () => {
 
       {/* Seamless transition gradient - extended and softened */}
       <div
-        className="absolute bottom-[-1px] left-0 w-full h-[30vh] z-10 pointer-events-none"
+        className="absolute bottom-[-1px] left-0 w-full h-[10vh] z-10 pointer-events-none"
         style={{
-          background: 'linear-gradient(to top, hsl(var(--background)) 0%, hsla(var(--background), 0.8) 20%, hsla(var(--background), 0) 100%)'
+          background: 'linear-gradient(to top, hsl(var(--background)) 0%, hsla(var(--background), 0.5) 20%, hsla(var(--background), 0) 100%)'
         }}
       />
     </section>

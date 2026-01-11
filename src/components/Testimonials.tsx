@@ -14,22 +14,22 @@ const testimonials = [
     branch: "BE/IT"
   },
   {
-    quote: "Inspiria 4.0 felt more like a tech conference than a college event. Everything—from speakers to execution—was top class.",
+    quote: "Inspiria 4.0 felt more like a tech conference than a college event. Everything, from speakers to execution, was top class.",
     name: "TANISH RAJWAR",
     branch: "BE/IT"
   },
 ];
 
 const TestimonialCard = ({ quote, name, branch }: { quote: string; name: string; branch: string }) => (
-  <div className="min-w-[280px] md:min-w-[400px] mx-3 md:mx-4 h-[200px] md:h-[240px]">
+  <div className="min-w-[280px] md:min-w-[400px] mx-3 md:mx-4 h-[240px] md:h-[280px]">
     <PixelCard variant="default" gap={10} className="group w-full h-full rounded-2xl overflow-hidden glass-dark border-0">
-      <div className="absolute inset-0 flex flex-col p-6 md:p-8 justify-between z-10 hover:text-white transition-colors duration-300">
-        <div className="flex flex-col h-full relative">
+      <div className="absolute inset-0 flex flex-col p-6 md:p-8 z-10 hover:text-white transition-colors duration-300">
+        <div className="flex flex-col flex-1 relative">
           <Quote className="w-4 h-4 md:w-5 md:h-5 text-accent/40 group-hover:text-accent mb-3 transition-colors duration-300 rotate-180" />
-          <p className="text-[#FFD700] group-hover:text-white leading-snug md:leading-relaxed text-xs md:text-sm transition-colors duration-300 font-medium px-1">
+          <p className="flex-1 text-[#FFD700] group-hover:text-white leading-snug md:leading-relaxed text-xs md:text-sm transition-colors duration-300 font-medium px-1">
             {quote}
           </p>
-          <div className="flex justify-end mt-auto">
+          <div className="flex justify-end mt-2">
             <Quote className="w-4 h-4 md:w-5 md:h-5 text-accent/40 group-hover:text-accent transition-colors duration-300" />
           </div>
         </div>

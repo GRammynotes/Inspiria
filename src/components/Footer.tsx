@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-// NavLink removed as it is no longer used
 import {
   faFacebook,
   faInstagram,
